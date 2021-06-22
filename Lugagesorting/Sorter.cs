@@ -104,7 +104,7 @@ namespace Lugagesorting
                                     }
 
                                     //Else target the gates buffer, which then adds it to the gates container.
-
+                                    
 
                                     Monitor.PulseAll(Manager.gates[j]);
                                     Monitor.Exit(Manager.gates[j]);

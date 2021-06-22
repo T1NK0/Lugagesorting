@@ -9,8 +9,8 @@ namespace Lugagesorting
     {
         Random random = new Random();
         private int _counterNumber;
-        private bool _isOpen = true;
-        public Lugage[] _counterLugageQueue = new Lugage[15];
+        private bool _isOpen;
+        public Lugage[] _counterLugageQueue = new Lugage[50];
         private Thread _t;
 
         public int CounterNumber
@@ -54,28 +54,28 @@ namespace Lugagesorting
                 //Try and enter a thread using the lugage que as a lock
                 if (Monitor.TryEnter(CounterLugageQueue))
                 {
-                    //for (int i = 0; i < Manager.flightPlans.Length; i++)
-                    //{
-                    //    if (Manager.flightPlans[i] == null)
-                    //    {
-                    //        Monitor.Wait(CounterLugageQueue, 2000);
-                    //    }
-                    //    if (Manager.flightPlans[i] != null && CounterLugageQueue[i] != null)
-                    //    {
-                    //        //    if (Manager.flightPlans[i].PlaneNumber == CounterLugageQueue[i].PlaneNumber)
-                    //        //    {
-                    //        if ((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds <= tempOpenDeparture && (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds >= tempCloseDeparture)
-                    //        {
-                    //            IsOpen = true;
-                    //        }
-                    //        else
-                    //        {
-                    //            IsOpen = false;
-                    //        }
-                    //        Monitor.PulseAll(CounterLugageQueue);
-                    //    }
-                    //    //}
-                    //}
+                    for (int i = 0; i < Manager.flightPlans.Length; i++)
+                    {
+                        if (Manager.flightPlans[i] == null)
+                        {
+                            Monitor.Wait(CounterLugageQueue, 2000);
+                        }
+                        if (Manager.flightPlans[i] != null && CounterLugageQueue[i] != null)
+                        {
+                            //    if (Manager.flightPlans[i].PlaneNumber == CounterLugageQueue[i].PlaneNumber)
+                            //    {
+                            if ((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds <= tempOpenDeparture && (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds >= tempCloseDeparture)
+                            {
+                                IsOpen = true;
+                            }
+                            else
+                            {
+                                IsOpen = false;
+                            }
+                            Monitor.PulseAll(CounterLugageQueue);
+                        }
+                        //}
+                    }
 
                     //While the counter is open, do the following
                     if (IsOpen)
@@ -159,6 +159,7 @@ namespace Lugagesorting
                     if (AmountInCounterArray() == 0)
                     {
                         Console.WriteLine($"Counter {CounterNumber} queue is empty");
+                        //Manager.PrintEvent?.Invoke(new DataPrinter($"Counter {CounterNumber} queue is empty", DataPrinter.DataTypePrint.ManagerData));
                         Thread.Sleep(2000);
                     }
 
