@@ -12,9 +12,11 @@ namespace Lugagesorting
     {
         public static Gate[] gates = new Gate[3];
         public static Counter[] counters = new Counter[3];
+        static Sorter sorter = new Sorter();
 
         LugageProducer lugageProducer = new LugageProducer();
         FlightProducer flightProducer = new FlightProducer();
+
 
         public static FlightPlan[] flightPlans = new FlightPlan[3];
         public static Lugage[] sorterConveyorbelt = new Lugage[300];
@@ -51,11 +53,9 @@ namespace Lugagesorting
             //everything needs to run in here while the thread is alive. (while the program runs, this needs to run)
             while (Thread.CurrentThread.IsAlive)
             {
-                // ------DATA OPEN / CLOSE------ //
+                Thread threadSorter = new Thread(sorter.SortBagage);
+                threadSorter.Start();
 
-                //Opengate
-
-                //RunSorter
             }
         }
     }

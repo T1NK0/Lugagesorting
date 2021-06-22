@@ -95,7 +95,7 @@ namespace Lugagesorting
         }
 
         /// <summary>
-        /// 
+        /// Adds to an array like a queue
         /// </summary>
         /// <param name="lugage"></param>
         /// <returns></returns>
