@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace LugageSorterGUI
 {
     /// <summary>
-    /// Interaction logic for FlightUserControl.xaml
+    /// Interaction logic for GateUserControl.xaml
     /// </summary>
-    public partial class FlightUserControl : UserControl
+    public partial class GateUserControl : UserControl
     {
-        public FlightUserControl()
+        public GateUserControl()
         {
             InitializeComponent();
         }
