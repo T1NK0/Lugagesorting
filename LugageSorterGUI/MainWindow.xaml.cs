@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
 using Lugagesorting;
+using System.Windows.Threading;
 
 namespace LugageSorterGUI
 {
@@ -41,28 +42,45 @@ namespace LugageSorterGUI
             //            break;
             //    }
             //}
-
-            //private void StartSimulation_Click(object sender, RoutedEventArgs e)
-            //{
-
-            //}
         }
 
+        private void EventPrinter(object sender, EventArgs e)
+        {
+
+
+            if (e is LugageEvent)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                    lbl_Counter1Queue.Content = ((LugageEvent)e).LugageInCounterQueue.ToString();
+                }));
+            }
+        }
+
+        //Start airport button click
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //Run method StartAirport
             StartAirport();
         }
 
+        /// <summary>
+        /// Starts the airportmanagerthread, whichs calls the CreateManager.
+        /// </summary>
         private void StartAirport()
         {
             Thread airportManagerThread = new Thread(CreateManager);
             airportManagerThread.Start();
         }
 
+        /// <summary>
+        /// Creates a manager, so we can target our airport items from the console application.
+        /// </summary>
         private void CreateManager()
         {
             Manager manager = new Manager();
-
+            manager.SimulationStart();
         }
     }
 }
