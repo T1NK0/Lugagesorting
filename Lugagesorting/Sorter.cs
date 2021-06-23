@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace Lugagesorting
 {
-    class Sorter
+    public class Sorter
     {
         public static int AmountInArray(Lugage[] lugage)
         {

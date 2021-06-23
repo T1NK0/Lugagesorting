@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace Lugagesorting
 {
-    class Counter : IOpenClose
+    public class Counter : IOpenClose
     {
         Random random = new Random();
         private int _counterNumber;

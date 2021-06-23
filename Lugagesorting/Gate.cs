@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace Lugagesorting
 {
-    class Gate : IOpenClose
+    public class Gate : IOpenClose
     {
         private int _gateNumber;
         private bool _isOpen = false;

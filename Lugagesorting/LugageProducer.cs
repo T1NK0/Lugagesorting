@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace Lugagesorting
 {
-    class LugageProducer
+    public class LugageProducer
     {
         Random random = new Random();
 

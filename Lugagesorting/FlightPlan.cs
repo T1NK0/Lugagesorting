@@ -17,7 +17,7 @@ namespace Lugagesorting
     /// <summary>
     /// Creates a flightplan which contains information about the planes
     /// </summary>
-    class FlightPlan
+    public class FlightPlan
     {
         private string _planeNumber;
         private int _gateNumber;

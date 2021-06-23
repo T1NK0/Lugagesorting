@@ -10,19 +10,19 @@
         <Button Content="START SIMULATION" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
         <Rectangle HorizontalAlignment="Left" Height="40" Margin="51,125,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Counter Queue" HorizontalAlignment="Left" Margin="65,132,0,0" VerticalAlignment="Top"/>
-        <Label Content="State" HorizontalAlignment="Left" Margin="176,132,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter1Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="65,132,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter1State" Content="State" HorizontalAlignment="Left" Margin="176,132,0,0" VerticalAlignment="Top"/>
 
         <Rectangle HorizontalAlignment="Left" Height="40" Margin="51,205,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
         <Label Content="Counter Queue" HorizontalAlignment="Left" Margin="65,212,0,0" VerticalAlignment="Top"/>
-        <Label Content="State" HorizontalAlignment="Left" Margin="176,212,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter2State" Content="State" HorizontalAlignment="Left" Margin="176,212,0,0" VerticalAlignment="Top"/>
 
         <Rectangle HorizontalAlignment="Left" Height="40" Margin="51,285,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Counter Queue" HorizontalAlignment="Left" Margin="65,292,0,0" VerticalAlignment="Top"/>
-        <Label Content="State" HorizontalAlignment="Left" Margin="176,292,0,0" VerticalAlignment="Top"/>
-
+        <Label Name="lbl_Counter2Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="65,292,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter3State" Content="State" HorizontalAlignment="Left" Margin="176,292,0,0" VerticalAlignment="Top"/>
+        
         <Rectangle HorizontalAlignment="Left" Height="200" Margin="257,125,0,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
-        <Label Content="Amount" HorizontalAlignment="Left" Margin="281,194,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter3Queue" Content="Amount" HorizontalAlignment="Left" Margin="281,194,0,0" VerticalAlignment="Top"/>
 
         <Rectangle HorizontalAlignment="Left" Height="100" Margin="434,175,0,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
         <Label Content="LugageInSorter" HorizontalAlignment="Left" Margin="438,194,0,0" VerticalAlignment="Top"/>
@@ -30,15 +30,15 @@
         <Label Content="First" HorizontalAlignment="Left" Margin="291,225,0,0" VerticalAlignment="Top"/>
 
         <Rectangle HorizontalAlignment="Left" Height="40" Margin="628,125,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Gate Queueue" HorizontalAlignment="Left" Margin="642,132,0,0" VerticalAlignment="Top"/>
-        <Label Content="State" HorizontalAlignment="Left" Margin="586,132,0,0" VerticalAlignment="Top"/>
+        <Label Name="Gate1LugageAmount" Content="GateLugage" HorizontalAlignment="Left" Margin="642,132,0,0" VerticalAlignment="Top"/>
+        <Label Name="Gate1State" Content="State" HorizontalAlignment="Left" Margin="586,132,0,0" VerticalAlignment="Top"/>
 
         <Rectangle HorizontalAlignment="Left" Height="40" Margin="628,205,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Counter Queue" HorizontalAlignment="Left" Margin="642,212,0,0" VerticalAlignment="Top"/>
-        <Label Content="State" HorizontalAlignment="Left" Margin="586,212,0,0" VerticalAlignment="Top"/>
+        <Label Name="Gate2LugageAmount" Content="GateLugage" HorizontalAlignment="Left" Margin="642,212,0,0" VerticalAlignment="Top"/>
+        <Label Name="Gate2State" Content="State" HorizontalAlignment="Left" Margin="586,212,0,0" VerticalAlignment="Top"/>
 
         <Rectangle HorizontalAlignment="Left" Height="40" Margin="628,285,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Counter Queue" HorizontalAlignment="Left" Margin="642,292,0,0" VerticalAlignment="Top"/>
-        <Label Content="State" HorizontalAlignment="Left" Margin="586,292,0,0" VerticalAlignment="Top"/>
+        <Label Name="Gate3LugageAmount" Content="GateLugage" HorizontalAlignment="Left" Margin="642,292,0,0" VerticalAlignment="Top"/>
+        <Label Name="Gate3State" Content="State" HorizontalAlignment="Left" Margin="586,292,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

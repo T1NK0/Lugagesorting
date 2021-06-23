@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
+using Lugagesorting;
 
 namespace LugageSorterGUI
 {
@@ -22,31 +24,45 @@ namespace LugageSorterGUI
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); //Auto generated
+
+            
+
+            //private static void PrintDataEvent(DataPrinter printer)
+            //{
+            //    switch (printer.dataTypePrint)
+            //    {
+            //        case DataPrinter.DataTypePrint.BaggageData:
+            //            break;
+            //        case DataPrinter.DataTypePrint.ManagerData:
+            //            Manager.Textbox.Manager.Text = printer.Message;
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
+
+            //private void StartSimulation_Click(object sender, RoutedEventArgs e)
+            //{
+
+            //}
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            StartAirport();
         }
 
-        //private static void PrintDataEvent(DataPrinter printer)
-        //{
-        //    switch (printer.dataTypePrint)
-        //    {
-        //        case DataPrinter.DataTypePrint.BaggageData:
-        //            break;
-        //        case DataPrinter.DataTypePrint.ManagerData:
-        //            Manager.Textbox.Manager.Text = printer.Message;
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
+        private void StartAirport()
+        {
+            Thread airportManagerThread = new Thread(CreateManager);
+            airportManagerThread.Start();
+        }
 
-        //private void StartSimulation_Click(object sender, RoutedEventArgs e)
-        //{
+        private void CreateManager()
+        {
+            Manager manager = new Manager();
 
-        //}
+        }
     }
 }

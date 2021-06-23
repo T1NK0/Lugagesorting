@@ -5,9 +5,9 @@ using System.Text;
 namespace Lugagesorting
 {
     /// <summary>
-    /// Lugage creater
+    /// Creates an instance of our lugage
     /// </summary>
-    class Lugage
+    public class Lugage
     {
         private string _lugageNumber;
         private int _passeengerNumber;
