@@ -88,7 +88,7 @@ namespace Lugagesorting
                             }
                             else
                             {
-                                Console.WriteLine("luggage'number' added to gate'number'");
+                                Console.WriteLine($"luggage {lugage.LugageNumber} added to gate'number'");
                             }
                         }
                     }

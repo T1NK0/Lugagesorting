@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="LugageSorterGUI.FlightUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LugageSorterGUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <StackPanel x:Name="PlaneInfoContainer" Orientation="Horizontal">
+            <StackPanel x:Name="PlaneInfoLeft" Orientation="Vertical">
+                <Image x:Name="FlightVector"></Image>
+                <Label x:Name="FlightNumber" Content="GE123"></Label>
+            </StackPanel>
+            <StackPanel x:Name="PlaneInfoRight" Orientation="Vertical">
+                <Label x:Name="Destination" Content="Destination: Germany"></Label>
+                <Label x:Name="Gate" Content="Gate: 1"></Label>
+                <Label x:Name="Departure" Content="Departure: 06/23/2021 12:00:23"></Label>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
