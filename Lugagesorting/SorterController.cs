@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lugagesorting
 {
-    class CounterManager
+    class SorterController
     {
     }
 }

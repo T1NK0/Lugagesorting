@@ -27,7 +27,7 @@ namespace LugageSorterGUI
         {
             InitializeComponent(); //Auto generated
 
-            
+            StartCounterEventController();
 
             //private static void PrintDataEvent(DataPrinter printer)
             //{
@@ -44,10 +44,8 @@ namespace LugageSorterGUI
             //}
         }
 
-        private void EventPrinter(object sender, EventArgs e)
+        private void EventListener(object sender, EventArgs e)
         {
-
-
             if (e is LugageEvent)
             {
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
@@ -56,7 +54,33 @@ namespace LugageSorterGUI
                     lbl_Counter1Queue.Content = ((LugageEvent)e).LugageInCounterQueue.ToString();
                 }));
             }
+
+            if (e is LugageEvent)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                    lbl_Counter2Queue.Content = ((LugageEvent)e).LugageInCounterQueue.ToString();
+                }));
+            }
+
+            if (e is LugageEvent)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                    lbl_Counter3Queue.Content = ((LugageEvent)e).LugageInCounterQueue.ToString();
+                }));
+            }
         }
+
+        private void StartCounterEventController()
+        {
+            LugageEventController lugageEventController = new LugageEventController();
+
+            lugageEventController.lugageEventHandler += EventListener;
+        }
+
 
         //Start airport button click
         private void Button_Click(object sender, RoutedEventArgs e)

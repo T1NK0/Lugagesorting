@@ -38,7 +38,10 @@ namespace Lugagesorting
                                         Monitor.Wait(counter.CounterLugageQueue, 2000);
                                     }
                                 }
+
+                                Thread.Sleep(random.Next(1000, 2000));
                             }
+
                             Monitor.PulseAll(counter.CounterLugageQueue);
                             Monitor.Exit(counter.CounterLugageQueue);
                         }

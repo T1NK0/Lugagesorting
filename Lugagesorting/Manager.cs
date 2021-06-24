@@ -17,13 +17,11 @@ namespace Lugagesorting
         LugageProducer lugageProducer = new LugageProducer();
         FlightProducer flightProducer = new FlightProducer();
 
-
         public static FlightPlan[] flightPlans = new FlightPlan[3];
         public static Lugage[] sorterConveyorbelt = new Lugage[300];
 
         //Delegate is a way to send a class. We says that the print class needs a dataprinter, which we call printer. (It requires a string and the type of data it is. Either ManagerData or BagageData)
         //delegate void Print(DataPrinter printer);
-        //public static event Print PrintEvent;
 
         public void SimulationStart()
         {
@@ -42,21 +40,18 @@ namespace Lugagesorting
             }
 
             // ------DATA CREATERS------ //
-            //CreatePlanes
+            //Create planes thread
             Thread planeCreaterThread = new Thread(flightProducer.GenerateFlights);
             planeCreaterThread.Start();
 
-            //CreateLuage
+            //Create luage lugage
             Thread lugageCreaterThread = new Thread(lugageProducer.GenerateLugage);
             lugageCreaterThread.Start();
 
-            //everything needs to run in here while the thread is alive. (while the program runs, this needs to run)
-            while (Thread.CurrentThread.IsAlive)
-            {
-                Thread threadSorter = new Thread(sorter.SortBagage);
-                threadSorter.Start();
 
-            }
+            //Create sorter thread
+            Thread threadSorter = new Thread(sorter.SortBagage);
+            threadSorter.Start();
         }
     }
 }

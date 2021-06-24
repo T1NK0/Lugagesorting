@@ -101,62 +101,6 @@ namespace Lugagesorting
                     Monitor.PulseAll(Manager.sorterConveyorbelt);
                     Monitor.Exit(Manager.sorterConveyorbelt);
                 }
-
-                //while (Thread.CurrentThread.IsAlive)
-                //{
-                //    Monitor.Enter(Manager.sorterConveyorbelt);
-
-                //    while (AmountInSorterConveyorbelt() == 0)
-                //    {
-                //        Console.WriteLine("Sorter conveyor is empty");
-                //        Monitor.Wait(Manager.sorterConveyorbelt);
-                //    }
-
-                //    for (int i = 0; i < Manager.sorterConveyorbelt.Length; i++)
-                //    {
-                //        if (Manager.sorterConveyorbelt[i] != null)
-                //        {
-                //            Manager.sorterConveyorbelt[i].TimeStampSortingIn = DateTime.Now;
-                //            Console.WriteLine($"{Manager.sorterConveyorbelt[i].LugageNumber} has been checked in to sorting at {Manager.sorterConveyorbelt[i].TimeStampSortingIn}");
-
-                //            for (int j = 0; j < Manager.gates.Length; j++)
-                //            {
-                //                if (Manager.sorterConveyorbelt[i].PlaneNumber == Manager.gates[j].FlightPlan.PlaneNumber)
-                //                {
-                //                    if (Monitor.TryEnter(Manager.gates[j]))
-                //                    {
-                //                        //Checks if the gate buffer is available else wait.
-                //                        while (Manager.gates[j].GateBuffer.Length <= AmountInGateConveyorbelt())
-                //                        {
-                //                            Console.WriteLine("Gate conveyorbelt is full");
-                //                            Monitor.Wait(Manager.gates[j], 2000);
-                //                        }
-
-                //                        //Else target the gates buffer, which then adds it to the gates container.
-                //                        for (int k = 0; k < Manager.gates[j].GateBuffer.Length; k++)
-                //                        {
-                //                            if (Manager.gates[j].GateBuffer[k] == null)
-                //                            {
-                //                                Manager.sorterConveyorbelt[i].TimeStampSortingOut = DateTime.Now;
-                //                                Console.WriteLine($"{Manager.sorterConveyorbelt[i].LugageNumber} has been checked out of sorting at {Manager.sorterConveyorbelt[i].TimeStampSortingIn} to gate {Manager.gates[j].GateNumber}");
-
-                //                                Manager.gates[j].GateBuffer[k] = Manager.sorterConveyorbelt[i];
-                //                                Manager.sorterConveyorbelt[i] = null;
-
-                //                                //NEED TO USE MY "ADDLUGGAE" METHOD SO IT WORKS LIKE A QUEUE MAYBE?
-
-                //                            }
-                //                        }
-                //                        Monitor.PulseAll(Manager.gates[j]);
-                //                        Monitor.Exit(Manager.gates[j]);
-                //                    }
-                //                }
-                //            }
-                //        }
-                //    }
-                //    Monitor.PulseAll(Manager.sorterConveyorbelt);
-                //    Monitor.Exit(Manager.sorterConveyorbelt);
-                //}
             }
         }
     }

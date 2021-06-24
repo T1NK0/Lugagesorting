@@ -9,8 +9,8 @@ namespace Lugagesorting
     {
         Random random = new Random();
         private int _counterNumber;
-        private bool _isOpen;
-        public Lugage[] _counterLugageQueue = new Lugage[50];
+        private bool _isOpen = true;
+        public static Lugage[] _counterLugageQueue = new Lugage[50];
         private Thread _t;
 
         public int CounterNumber
@@ -101,12 +101,15 @@ namespace Lugagesorting
         /// <returns></returns>
         public bool AddToCheckinCounterQueue(Lugage lugage)
         {
-            for (int i = 0; i < CounterLugageQueue.Length; i++)
+            for (int i = 0; i < Manager.counters.Length; i++)
             {
-                if (CounterLugageQueue[i] == null)
+                for (int j = 0; j < Manager.counters[i].CounterLugageQueue.Length; j++)
                 {
-                    CounterLugageQueue[i] = lugage;
-                    return true;
+                    if (CounterLugageQueue[j] == null)
+                    {
+                        CounterLugageQueue[j] = lugage;
+                        return true;
+                    }
                 }
             }
             return false;
@@ -118,13 +121,16 @@ namespace Lugagesorting
         /// <returns></returns>
         public Lugage RetrieveFromCounterQueue()
         {
-            for (int i = 0; i < CounterLugageQueue.Length; i++)
+            for (int i = 0; i < Manager.counters.Length; i++)
             {
-                if (CounterLugageQueue[i] != null)
+                for (int j = 0; j < Manager.counters[i].CounterLugageQueue.Length; j++)
                 {
-                    Lugage d = CounterLugageQueue[i];
-                    CounterLugageQueue[i] = null;
-                    return d;
+                    if (Manager.counters[i].CounterLugageQueue[j] != null)
+                    {
+                        Lugage d = Manager.counters[i].CounterLugageQueue[j];
+                        Manager.counters[i].CounterLugageQueue[j] = null;
+                        return d;
+                    }
                 }
             }
             return null;

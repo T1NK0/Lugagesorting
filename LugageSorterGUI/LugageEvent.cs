@@ -18,7 +18,7 @@ namespace LugageSorterGUI
             set { _lugageInCounterQueue = value; }
         }
 
-        //Our constructor
+        //The constructor
         public LugageEvent(int amount)
         {
             _lugageInCounterQueue = amount; //Sets it equal to our amount which we can change.
