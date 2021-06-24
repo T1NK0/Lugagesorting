@@ -51,7 +51,7 @@ namespace Lugagesorting
                 {
                     if (lugages[i] == null)
                     {
-                        lugages[i] = lugage; //We get our drink from our "Get Drink".
+                        lugages[i] = lugage; //We get our lugage from our "sorterBuffer".
 
                         Monitor.Pulse(lugages);
                         Monitor.Exit(lugages); //If we dont have exit here, we wont be able to exit if it has an empty spot..

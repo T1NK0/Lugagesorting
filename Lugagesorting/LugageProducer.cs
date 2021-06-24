@@ -16,8 +16,7 @@ namespace Lugagesorting
                 for (int i = 0; i < Manager.counters.Length; i++)
                 {
                     Counter counter = Manager.counters[i];
-                    //if (counter.IsOpen)
-                    //{
+
                     for (int j = 0; j < Manager.counters[i].CounterLugageQueue.Length; j++)
                     {
                         if (Monitor.TryEnter(counter.CounterLugageQueue))
@@ -46,7 +45,6 @@ namespace Lugagesorting
                             Monitor.Exit(counter.CounterLugageQueue);
                         }
                     }
-                    //}
                 }
             }
         }

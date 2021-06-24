@@ -34,6 +34,7 @@ namespace LugageSorterGUI
         public int AmountInCounterArray()
         {
             int AmountInArray = 0;
+
             for (int i = 0; i < Counter._counterLugageQueue.Length; i++)
             {
                 if (Counter._counterLugageQueue[i] != null)

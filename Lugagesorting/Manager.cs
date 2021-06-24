@@ -48,7 +48,6 @@ namespace Lugagesorting
             Thread lugageCreaterThread = new Thread(lugageProducer.GenerateLugage);
             lugageCreaterThread.Start();
 
-
             //Create sorter thread
             Thread threadSorter = new Thread(sorter.SortBagage);
             threadSorter.Start();
