@@ -10,6 +10,7 @@ namespace Lugagesorting
     {
         Random random = new Random();
 
+        object _locktest = new object();
         public void GenerateLugage()
         {
             while (Thread.CurrentThread.IsAlive)
@@ -39,7 +40,7 @@ namespace Lugagesorting
                                     }
                                 }
 
-                                Thread.Sleep(random.Next(1000, 2000));
+                                Thread.Sleep(500);
                             }
 
                             Monitor.PulseAll(counter.CounterLugageQueue);

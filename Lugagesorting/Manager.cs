@@ -21,9 +21,6 @@ namespace Lugagesorting
         public static FlightPlan[] flightPlans = new FlightPlan[3];
         public static Lugage[] sorterConveyorbelt = new Lugage[300];
 
-        //Delegate is a way to send a class. We says that the print class needs a dataprinter, which we call printer. (It requires a string and the type of data it is. Either ManagerData or BagageData)
-        //delegate void Print(DataPrinter printer);
-
         public void SimulationStart()
         {
             for (int i = 0; i < gates.Length; i++)

@@ -118,7 +118,7 @@ namespace Lugagesorting
         ///// <returns>Either null or the temp lugage from array index 1, so that it consumes from the array as a queue.</returns>
         //public Lugage RetrieveFromQueue()
         //{
-        //    if (CounterLugageQueue[0] == null)
+        //    if (CounterLugageQueue == null)
         //    {
         //        return null;
         //    }
@@ -127,7 +127,12 @@ namespace Lugagesorting
         //    {
         //        CounterLugageQueue[i - 1] = CounterLugageQueue[i];
         //    }
-        //    CounterLugageQueue[_arrayIndex - 1] = null;
+
+        //    if (_arrayIndex != 0)
+        //    {
+        //        CounterLugageQueue[_arrayIndex - 1] = null;
+        //    }
+
         //    _arrayIndex--;
         //    return tempLugage;
         //}
@@ -212,7 +217,7 @@ namespace Lugagesorting
                                 tempLugage.TimeStampCheckin = currentTime;
                                 Manager.sorterConveyorbelt[i] = tempLugage;
                                 Debug.WriteLine($"{tempLugage.LugageNumber} has now been added to spot {i} on the conveyorbelt, with timestamp {tempLugage.TimeStampCheckin}");
-                                Thread.Sleep(random.Next(0, 5000));
+                                Monitor.Wait(CounterLugageQueue, random.Next(0, 5000));
                             }
                         }
                     }

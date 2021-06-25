@@ -76,16 +76,16 @@ namespace Lugagesorting
                         Monitor.Wait(Manager.sorterConveyorbelt, 2000);
                     }
 
-                    Lugage lugage = GetLugage(Manager.sorterConveyorbelt, true); //This is the drink we have gotten from GetDrink in buffer. Can work with whatever buffer we want to get Drink from.
-                    if (lugage != null) //Check if we have gotten a drink, else it has no drinks left in the buffer (on the conveyor belt)
+                    Lugage lugage = GetLugage(Manager.sorterConveyorbelt, true); //This is the lugage we have gotten from GetLugage in buffer. Can work with whatever buffer we want to get Lugage from.
+                    if (lugage != null) //Check if we have gotten a lugage, else it has no lugage left in the buffer (on the conveyor belt)
                     {
                         for (int i = 0; i < Manager.gates.Length; i++)
                         {
                             //NOT SURE HOW TO TARGET THE RIGHT GATE, BUT THINK I GOT THE LOGIC DOWN OTHERWISE
-                            if (AddLugage(Manager.gates[i].GateBuffer, lugage) == false) //If false, no room. If true there is room for sodas and add the drink to the buffer.
+                            if (AddLugage(Manager.gates[i].GateBuffer, lugage) == false) //If false, no room. If true there is room for luage, then add the lugage to the buffer.
                             {
                                 //if false (no room) writes out "No more space".
-                                AddLugage(Manager.sorterConveyorbelt, lugage); //Adds the soda in the buffer if there is no space for sodas, since we otherwise would delete the item.
+                                AddLugage(Manager.sorterConveyorbelt, lugage); //Adds the lugage in the buffer if there is no space for lugage, since we otherwise would delete the item.
                             }
                             else
                             {

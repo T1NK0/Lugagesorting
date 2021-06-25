@@ -28,20 +28,6 @@ namespace LugageSorterGUI
             InitializeComponent(); //Auto generated
 
             StartCounterEventController();
-
-            //private static void PrintDataEvent(DataPrinter printer)
-            //{
-            //    switch (printer.dataTypePrint)
-            //    {
-            //        case DataPrinter.DataTypePrint.BaggageData:
-            //            break;
-            //        case DataPrinter.DataTypePrint.ManagerData:
-            //            Manager.Textbox.Manager.Text = printer.Message;
-            //            break;
-            //        default:
-            //            break;
-            //    }
-            //}
         }
 
         private void EventListener(object sender, EventArgs e)
