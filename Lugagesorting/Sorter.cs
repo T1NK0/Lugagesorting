@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 
@@ -88,13 +89,13 @@ namespace Lugagesorting
                             }
                             else
                             {
-                                Console.WriteLine($"luggage {lugage.LugageNumber} added to gate'number'");
+                                Debug.WriteLine($"luggage {lugage.LugageNumber} added to gate'number'");
                             }
                         }
                     }
                     else
                     {
-                        Console.WriteLine("There is no more lugage on sorter buffer");
+                        Debug.WriteLine("There is no more lugage on sorter buffer");
                         Thread.Sleep(1000);
                     }
 

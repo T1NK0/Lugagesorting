@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 
@@ -28,14 +29,14 @@ namespace Lugagesorting
             for (int i = 0; i < gates.Length; i++)
             {
                 gates[i] = new Gate(i);
-                Console.WriteLine($"Gate: {gates[i].GateNumber} has been created");
+                Debug.WriteLine($"Gate: {gates[i].GateNumber} has been created");
                 //PrintEvent?.Invoke(new DataPrinter($"Gate: {gates[i].GateNumber} has been created", DataPrinter.DataTypePrint.ManagerData));
             }
 
             for (int i = 0; i < counters.Length; i++)
             {
                 counters[i] = new Counter(i);
-                Console.WriteLine($"Counter: {counters[i].CounterNumber} has been created");
+                Debug.WriteLine($"Counter: {counters[i].CounterNumber} has been created");
                 //PrintEvent?.Invoke(new DataPrinter($"Counter: {counters[i].CounterNumber} has been created", DataPrinter.DataTypePrint.ManagerData));
             }
 

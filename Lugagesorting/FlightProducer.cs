@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 
@@ -35,7 +36,7 @@ namespace Lugagesorting
                             {
                                 Manager.gates[gateNumber].FlightPlan = new FlightPlan(planeNumber, gateNumber, 300, (Destination)destination, departureTime);
                                 Manager.flightPlans[i] = Manager.gates[gateNumber].FlightPlan;
-                                Console.WriteLine($"Flight {Manager.gates[gateNumber].FlightPlan.PlaneNumber} is going to gate {gateNumber}, and is departing at {Manager.gates[gateNumber].FlightPlan.DepartureTime} to {Manager.gates[gateNumber].FlightPlan.destinations}");
+                                Debug.WriteLine($"Flight {Manager.gates[gateNumber].FlightPlan.PlaneNumber} is going to gate {gateNumber}, and is departing at {Manager.gates[gateNumber].FlightPlan.DepartureTime} to {Manager.gates[gateNumber].FlightPlan.destinations}");
                             }
                         }
                     }

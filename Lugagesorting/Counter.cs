@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 
@@ -85,7 +86,7 @@ namespace Lugagesorting
                         while (AmountInCounterArray() == 0)
                         {
                             //tell the thread to wait for 2 seconds.
-                            Console.WriteLine($"Counter {CounterNumber} is waiting for luggage");
+                            Debug.WriteLine($"Counter {CounterNumber} is waiting for luggage");
                             Monitor.Wait(CounterLugageQueue, 2000);
                         }
                         //Start checking in lugage.
@@ -195,7 +196,7 @@ namespace Lugagesorting
                 {
                     if (AmountInCounterArray() == 0)
                     {
-                        Console.WriteLine($"Counter {CounterNumber} queue is empty");
+                        Debug.WriteLine($"Counter {CounterNumber} queue is empty");
                         //Manager.PrintEvent?.Invoke(new DataPrinter($"Counter {CounterNumber} queue is empty", DataPrinter.DataTypePrint.ManagerData));
                         Thread.Sleep(2000);
                     }
@@ -210,7 +211,7 @@ namespace Lugagesorting
                                 DateTime currentTime = DateTime.Now;
                                 tempLugage.TimeStampCheckin = currentTime;
                                 Manager.sorterConveyorbelt[i] = tempLugage;
-                                Console.WriteLine($"{tempLugage.LugageNumber} has now been added to spot {i} on the conveyorbelt, with timestamp {tempLugage.TimeStampCheckin}");
+                                Debug.WriteLine($"{tempLugage.LugageNumber} has now been added to spot {i} on the conveyorbelt, with timestamp {tempLugage.TimeStampCheckin}");
                                 Thread.Sleep(random.Next(0, 5000));
                             }
                         }
