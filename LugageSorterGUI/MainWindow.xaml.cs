@@ -27,7 +27,7 @@ namespace LugageSorterGUI
         {
             InitializeComponent(); //Auto generated
 
-            //StartCounterEventController();
+            StartCounterEventController();
         }
 
         private void LugageCreatedListener(object sender, EventArgs e)
