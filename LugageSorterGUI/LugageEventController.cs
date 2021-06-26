@@ -8,11 +8,19 @@ namespace LugageSorterGUI
 {
     class LugageEventController
     {
-        public EventHandler lugageEventHandler;
+        public EventHandler lugageCreationEventHandler;
+        private int _counterNumber;
+
+        public int CounterNumber
+        {
+            get { return _counterNumber; }
+            set { CounterNumber = value; }
+        }
 
         //Starts the thread to get the lugage count.
-        public LugageEventController()
+        public LugageEventController(int counterNumber)
         {
+            this._counterNumber = counterNumber;
             Thread _t = new Thread(GetLugageCount);
             _t.Start();
         }
@@ -25,8 +33,8 @@ namespace LugageSorterGUI
             {
                 int tempAmount = AmountInCounterArray();
 
-                lugageEventHandler?.Invoke(this, new LugageEvent(tempAmount));
-                Thread.Sleep(5000);
+                lugageCreationEventHandler?.Invoke(this, new CheckinQueueEvent(tempAmount));
+                Thread.Sleep(250);
             }
         }
 

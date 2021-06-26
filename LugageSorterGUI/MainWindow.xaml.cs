@@ -27,44 +27,46 @@ namespace LugageSorterGUI
         {
             InitializeComponent(); //Auto generated
 
-            StartCounterEventController();
+            //StartCounterEventController();
         }
 
-        private void EventListener(object sender, EventArgs e)
+        private void LugageCreatedListener(object sender, EventArgs e)
         {
-            if (e is LugageEvent)
+            if (e is CheckinQueueEvent)
             {
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
-                    lbl_Counter1Queue.Content = ((LugageEvent)e).LugageInCounterQueue.ToString();
+                    lbl_Counter1Queue.Content = ((CheckinQueueEvent)e).LugageInCounterQueue.ToString();
                 }));
             }
 
-            if (e is LugageEvent)
+            if (e is CheckinQueueEvent)
             {
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
-                    //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
-                    lbl_Counter2Queue.Content = ((LugageEvent)e).LugageInCounterQueue.ToString();
+                    //Looks at our label (counter2) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                    lbl_Counter2Queue.Content = ((CheckinQueueEvent)e).LugageInCounterQueue.ToString();
                 }));
             }
 
-            if (e is LugageEvent)
+            if (e is CheckinQueueEvent)
             {
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
-                    //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
-                    lbl_Counter3Queue.Content = ((LugageEvent)e).LugageInCounterQueue.ToString();
+                    //Looks at our label (counter3) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                    lbl_Counter3Queue.Content = ((CheckinQueueEvent)e).LugageInCounterQueue.ToString();
                 }));
             }
         }
 
         private void StartCounterEventController()
         {
-            LugageEventController lugageEventController = new LugageEventController();
-
-            lugageEventController.lugageEventHandler += EventListener;
+            for (int i = 0; i < Manager.counters.Length; i++)
+            {
+                LugageEventController lugageEventController = new LugageEventController(i);
+                lugageEventController.lugageCreationEventHandler += LugageCreatedListener;
+            }
         }
 
 
