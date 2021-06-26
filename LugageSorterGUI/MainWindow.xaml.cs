@@ -36,28 +36,42 @@ namespace LugageSorterGUI
             {
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
+                    switch (((CheckinQueueEvent)e))
+                    {
+                        default:
+                            break;
+                    }
                     //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
                     lbl_Counter1Queue.Content = ((CheckinQueueEvent)e).LugageInCounterQueue.ToString();
                 }));
             }
 
-            if (e is CheckinQueueEvent)
-            {
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
-                {
-                    //Looks at our label (counter2) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
-                    lbl_Counter2Queue.Content = ((CheckinQueueEvent)e).LugageInCounterQueue.ToString();
-                }));
-            }
+            //if (e is CheckinQueueEvent)
+            //{
+            //    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+            //    {
+            //        //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+            //        lbl_Counter1Queue.Content = ((CheckinQueueEvent)e).LugageInCounterQueue.ToString();
+            //    }));
+            //}
 
-            if (e is CheckinQueueEvent)
-            {
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
-                {
-                    //Looks at our label (counter3) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
-                    lbl_Counter3Queue.Content = ((CheckinQueueEvent)e).LugageInCounterQueue.ToString();
-                }));
-            }
+            //if (e is CheckinQueueEvent)
+            //{
+            //    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+            //    {
+            //        //Looks at our label (counter2) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+            //        lbl_Counter2Queue.Content = ((CheckinQueueEvent)e).LugageInCounterQueue.ToString();
+            //    }));
+            //}
+
+            //if (e is CheckinQueueEvent)
+            //{
+            //    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+            //    {
+            //        //Looks at our label (counter3) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+            //        lbl_Counter3Queue.Content = ((CheckinQueueEvent)e).LugageInCounterQueue.ToString();
+            //    }));
+            //}
         }
 
         private void StartCounterEventController()
