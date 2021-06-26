@@ -10,6 +10,7 @@ namespace LugageSorterGUI
     {
         public EventHandler lugageCreationEventHandler;
         private int _counterNumber;
+        object _threadlock = new object();
 
         public int CounterNumber
         {
@@ -31,10 +32,26 @@ namespace LugageSorterGUI
         {
             while (true)
             {
-                int tempAmount = AmountInCounterArray();
+                if (Monitor.TryEnter(_threadlock))
+                {
+                    if (Manager.counters[CounterNumber] == null)
+                    {
+                        Monitor.Wait(_threadlock, 2000);
+                    }
+                    else
+                    {
+                        int tempAmount = AmountInCounterArray();
+                        int checkinCounterNumber = Manager.counters[CounterNumber].CounterNumber;
+                        bool counterStatus = Manager.counters[CounterNumber].IsOpen;
 
-                lugageCreationEventHandler?.Invoke(this, new CheckinQueueEvent(tempAmount));
-                Thread.Sleep(250);
+
+                        lugageCreationEventHandler?.Invoke(this, new CheckinQueueEvent(tempAmount, checkinCounterNumber, counterStatus));
+                        Thread.Sleep(250);
+                        Monitor.PulseAll(_threadlock);
+                        Monitor.Exit(_threadlock);
+                    }
+                }
+
             }
         }
 

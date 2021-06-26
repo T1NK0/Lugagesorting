@@ -36,13 +36,33 @@ namespace LugageSorterGUI
             {
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
-                    switch (((CheckinQueueEvent)e))
+                    switch (((CheckinQueueEvent)e).CounterNumber)
                     {
+                        case 0:
+                            if (((CheckinQueueEvent)e).CounterNumber == 0)
+                            {
+                                //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                                lbl_Counter1Queue.Content = ((CheckinQueueEvent)e).CounterNumber;
+                            }
+                            break;
+                        case 1:
+                            if (((CheckinQueueEvent)e).CounterNumber == 1)
+                            {
+                                //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                                lbl_Counter2Queue.Content = ((CheckinQueueEvent)e).CounterNumber;
+                            }
+                            break;
+                        case 2:
+                            if (((CheckinQueueEvent)e).CounterNumber == 2)
+                            {
+                                //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                                lbl_Counter3Queue.Content = ((CheckinQueueEvent)e).CounterNumber;
+                            }
+                            break;
                         default:
                             break;
                     }
-                    //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
-                    lbl_Counter1Queue.Content = ((CheckinQueueEvent)e).LugageInCounterQueue.ToString();
+
                 }));
             }
 
