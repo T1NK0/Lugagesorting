@@ -39,24 +39,39 @@ namespace LugageSorterGUI
                     switch (((CheckinQueueEvent)e).CounterNumber)
                     {
                         case 0:
-                            if (((CheckinQueueEvent)e).CounterNumber == 0)
+                            if (((CheckinQueueEvent)e).CounterNumber == 0 && ((CheckinQueueEvent)e).Status)
                             {
                                 //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
                                 lbl_Counter1Queue.Content = ((CheckinQueueEvent)e).CounterNumber;
+                                lbl_Counter1Queue.Background = new SolidColorBrush(Colors.Green);
+                            }
+                            else
+                            {
+                                lbl_Counter1Queue.Background = new SolidColorBrush(Colors.Red);
                             }
                             break;
                         case 1:
-                            if (((CheckinQueueEvent)e).CounterNumber == 1)
+                            if (((CheckinQueueEvent)e).CounterNumber == 1 && ((CheckinQueueEvent)e).Status)
                             {
                                 //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
                                 lbl_Counter2Queue.Content = ((CheckinQueueEvent)e).CounterNumber;
+                                lbl_Counter2Queue.Background = new SolidColorBrush(Colors.Green);
+                            }
+                            else
+                            {
+                                lbl_Counter2Queue.Background = new SolidColorBrush(Colors.Red);
                             }
                             break;
                         case 2:
-                            if (((CheckinQueueEvent)e).CounterNumber == 2)
+                            if (((CheckinQueueEvent)e).CounterNumber == 2 && ((CheckinQueueEvent)e).Status)
                             {
                                 //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
                                 lbl_Counter3Queue.Content = ((CheckinQueueEvent)e).CounterNumber;
+                                lbl_Counter3Queue.Background = new SolidColorBrush(Colors.Green);
+                            }
+                            else
+                            {
+                                lbl_Counter3Queue.Background = new SolidColorBrush(Colors.Red);
                             }
                             break;
                         default:
