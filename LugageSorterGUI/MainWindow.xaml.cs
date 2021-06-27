@@ -27,7 +27,7 @@ namespace LugageSorterGUI
         {
             InitializeComponent(); //Auto generated
 
-            StartCounterEventController();
+            StartCounterQueueEventController();
         }
 
         private void LugageCreatedListener(object sender, EventArgs e)
@@ -45,11 +45,11 @@ namespace LugageSorterGUI
                                 {
                                     //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
                                     lbl_Counter1Queue.Content = ((CheckinQueueEvent)e).Amount;
-                                    lbl_Counter1Queue.Background = new SolidColorBrush(Colors.Green);
+                                    lbl_Counter1State.Background = new SolidColorBrush(Colors.Green);
                                 }
                                 else
                                 {
-                                    lbl_Counter1Queue.Background = new SolidColorBrush(Colors.Red);
+                                    lbl_Counter1State.Background = new SolidColorBrush(Colors.Red);
                                 }
                                 break;
                             case 1:
@@ -57,11 +57,11 @@ namespace LugageSorterGUI
                                 {
                                     //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
                                     lbl_Counter2Queue.Content = ((CheckinQueueEvent)e).Amount;
-                                    lbl_Counter2Queue.Background = new SolidColorBrush(Colors.Green);
+                                    lbl_Counter2State.Background = new SolidColorBrush(Colors.Green);
                                 }
                                 else
                                 {
-                                    lbl_Counter2Queue.Background = new SolidColorBrush(Colors.Red);
+                                    lbl_Counter2State.Background = new SolidColorBrush(Colors.Red);
                                 }
                                 break;
                             case 2:
@@ -69,11 +69,11 @@ namespace LugageSorterGUI
                                 {
                                     //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
                                     lbl_Counter3Queue.Content = ((CheckinQueueEvent)e).Amount;
-                                    lbl_Counter3Queue.Background = new SolidColorBrush(Colors.Green);
+                                    lbl_Counter3State.Background = new SolidColorBrush(Colors.Green);
                                 }
                                 else
                                 {
-                                    lbl_Counter3Queue.Background = new SolidColorBrush(Colors.Red);
+                                    lbl_Counter3State.Background = new SolidColorBrush(Colors.Red);
                                 }
                                 break;
                         }
@@ -83,7 +83,18 @@ namespace LugageSorterGUI
             }
         }
 
-        private void StartCounterEventController()
+        private void LugageSorterListener(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void SorterEventController()
+        {
+
+        }
+
+        private void StartCounterQueueEventController()
         {
             for (int i = 0; i < Manager.counters.Length; i++)
             {
