@@ -8,6 +8,8 @@ namespace Lugagesorting
 {
     public class Sorter
     {
+        object _threadLock = new object();
+
         public static int AmountInArray(Lugage[] lugage)
         {
             int AmountInArray = 0;
@@ -68,12 +70,12 @@ namespace Lugagesorting
         {
             while (Thread.CurrentThread.IsAlive)
             {
-                if (Monitor.TryEnter(Manager.sorterConveyorbelt))
+                if (Monitor.TryEnter(_threadLock))
                 {
                     if (AmountInArray(Manager.sorterConveyorbelt) == 0)
                     {
                         //Console.WriteLine("Sorter buffer is empty");
-                        Monitor.Wait(Manager.sorterConveyorbelt, 2000);
+                        Monitor.Wait(_threadLock, 2000);
                     }
 
                     Lugage lugage = GetLugage(Manager.sorterConveyorbelt, true); //This is the lugage we have gotten from GetLugage in buffer. Can work with whatever buffer we want to get Lugage from.
@@ -89,18 +91,23 @@ namespace Lugagesorting
                             }
                             else
                             {
-                                Debug.WriteLine($"luggage {lugage.LugageNumber} added to gate'number'");
+                                if (Manager.gates[i].FlightPlan != null)
+                                {
+                                    //If lugage has the same flightnumber as the gate, send it to the current date.
+                                    //Could be expanded with some "departure times".
+                                    if (lugage.PlaneNumber == Manager.gates[i].FlightPlan.PlaneNumber)
+                                    {
+                                        Debug.WriteLine($"luggage {lugage.LugageNumber} added to gate {i}");
+                                        AddLugage(Manager.gates[i].GateBuffer, lugage);
+                                        i = Manager.gates.Length + 1;
+                                    }
+                                }
+
                             }
                         }
                     }
-                    else
-                    {
-                        Debug.WriteLine("There is no more lugage on sorter buffer");
-                        Thread.Sleep(1000);
-                    }
-
-                    Monitor.PulseAll(Manager.sorterConveyorbelt);
-                    Monitor.Exit(Manager.sorterConveyorbelt);
+                    Monitor.PulseAll(_threadLock);
+                    Monitor.Exit(_threadLock);
                 }
             }
         }
