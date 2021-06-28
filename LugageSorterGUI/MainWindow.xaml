@@ -9,16 +9,19 @@
         <Button Content="START SIMULATION" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
         <Image Margin="34,69,671,294" Stretch="Fill"  Source="/images/61082.jpg"/>
-        <Label Name="lbl_Counter1Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="134,107,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.209,-1"/>
-        <Label Name="lbl_Counter1State" Content="State" HorizontalAlignment="Left" Margin="134,74,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter1Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="134,114,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.209,-1"/>
+        <Label Name="lbl_Counter1State" Content="State" HorizontalAlignment="Left" Margin="134,87,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter1" Content="State" HorizontalAlignment="Left" Margin="134,61,0,0" VerticalAlignment="Top"/>
 
         <Image Margin="34,176,671,186" Stretch="Fill" Source="/images/61082.jpg"/>
-        <Label Name="lbl_Counter2Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="134,214,0,0" VerticalAlignment="Top"/>
-        <Label Name="lbl_Counter2State" Content="State" HorizontalAlignment="Left" Margin="134,181,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter2Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="134,222,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter2State" Content="State" HorizontalAlignment="Left" Margin="134,194,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter2" Content="State" HorizontalAlignment="Left" Margin="134,168,0,0" VerticalAlignment="Top"/>
 
         <Image Margin="34,269,671,93" Stretch="Fill" Source="/images/61082.jpg"/>
-        <Label Name="lbl_Counter3Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="134,308,0,0" VerticalAlignment="Top"/>
-        <Label Name="lbl_Counter3State" Content="State" HorizontalAlignment="Left" Margin="134,275,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter3Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="134,315,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter3State" Content="State" HorizontalAlignment="Left" Margin="134,289,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter3" Content="State" HorizontalAlignment="Left" Margin="134,263,0,0" VerticalAlignment="Top"/>
 
         <Rectangle HorizontalAlignment="Left" Height="200" Margin="294,125,0,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
         <Label Name="lbl_SorterAmount"  Content="Amount" HorizontalAlignment="Left" Margin="318,194,0,0" VerticalAlignment="Top"/>

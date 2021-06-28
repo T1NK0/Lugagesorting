@@ -44,36 +44,44 @@ namespace LugageSorterGUI
                                 if (((CheckinQueueEvent)e).CounterNumber == 0 && ((CheckinQueueEvent)e).Status)
                                 {
                                     //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                                    lbl_Counter1.Content = "Counter: " + ((CheckinQueueEvent)e).CounterNumber;
                                     lbl_Counter1Queue.Content = ((CheckinQueueEvent)e).Amount;
                                     lbl_Counter1State.Background = new SolidColorBrush(Colors.Green);
+                                    lbl_Counter1State.Content = "Open";
                                 }
                                 else
                                 {
                                     lbl_Counter1State.Background = new SolidColorBrush(Colors.Red);
+                                    lbl_Counter1State.Content = "Closed";
                                 }
                                 break;
                             case 1:
                                 if (((CheckinQueueEvent)e).CounterNumber == 1 && ((CheckinQueueEvent)e).Status)
                                 {
                                     //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                                    lbl_Counter2.Content = "Counter: " + ((CheckinQueueEvent)e).CounterNumber;
                                     lbl_Counter2Queue.Content = ((CheckinQueueEvent)e).Amount;
                                     lbl_Counter2State.Background = new SolidColorBrush(Colors.Green);
+                                    lbl_Counter2State.Content = "Open";
                                 }
                                 else
                                 {
                                     lbl_Counter2State.Background = new SolidColorBrush(Colors.Red);
+                                    lbl_Counter2State.Content = "Closed";
                                 }
                                 break;
                             case 2:
                                 if (((CheckinQueueEvent)e).CounterNumber == 2 && ((CheckinQueueEvent)e).Status)
                                 {
-                                    //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                                    lbl_Counter3.Content = "Counter: " + ((CheckinQueueEvent)e).CounterNumber;
                                     lbl_Counter3Queue.Content = ((CheckinQueueEvent)e).Amount;
                                     lbl_Counter3State.Background = new SolidColorBrush(Colors.Green);
+                                    lbl_Counter3State.Content = "Open";
                                 }
                                 else
                                 {
                                     lbl_Counter3State.Background = new SolidColorBrush(Colors.Red);
+                                    lbl_Counter3State.Content = "Closed";
                                 }
                                 break;
                         }
