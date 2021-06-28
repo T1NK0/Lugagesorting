@@ -29,6 +29,12 @@ namespace Lugagesorting
                                 if (Monitor.TryEnter(Manager.flightPlans[randomFlightplanIndex]))
                                 {
                                     string lugageNumber = Manager.flightPlans[randomFlightplanIndex].PlaneNumber.ToString() + random.Next(0, 50).ToString();
+
+                                    //if (Manager.counters[i].CounterLugageQueue[j].LugageNumber == lugageNumber)
+                                    //{
+                                    //    lugageNumber = Manager.flightPlans[randomFlightplanIndex].PlaneNumber.ToString() + random.Next(0, 50).ToString();
+                                    //}
+
                                     Lugage lugage = new Lugage(lugageNumber, random.Next(1, 10000), Manager.flightPlans[randomFlightplanIndex].PlaneNumber);
 
                                     Debug.WriteLine($"Lugage {lugage.LugageNumber} has been created in counter {counter.CounterNumber}");

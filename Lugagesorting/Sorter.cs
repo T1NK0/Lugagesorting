@@ -97,7 +97,9 @@ namespace Lugagesorting
                                     //Could be expanded with some "departure times".
                                     if (lugage.PlaneNumber == Manager.gates[i].FlightPlan.PlaneNumber)
                                     {
-                                        Debug.WriteLine($"luggage {lugage.LugageNumber} added to gate {i}");
+                                        DateTime currentTime = DateTime.Now;
+                                        lugage.TimeStampSortingOut = currentTime;
+                                        Debug.WriteLine($"luggage {lugage.LugageNumber} added to gate {i} at {currentTime}");
                                         AddLugage(Manager.gates[i].GateBuffer, lugage);
                                         i = Manager.gates.Length + 1;
                                     }

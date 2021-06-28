@@ -28,6 +28,7 @@ namespace LugageSorterGUI
             InitializeComponent(); //Auto generated
 
             StartCounterQueueEventController();
+            SorterEventController();
         }
 
         private void LugageCreatedListener(object sender, EventArgs e)
@@ -93,13 +94,21 @@ namespace LugageSorterGUI
 
         private void LugageSorterListener(object sender, EventArgs e)
         {
+            if (e is LugageSorterEvent)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    lbl_SorterAmount.Content = ((LugageSorterEvent)e).Amount;
+                    lbl_soterFirst.Content = ((LugageSorterEvent)e).Lugage;
+                }));
+            }
 
         }
 
-
         private void SorterEventController()
         {
-
+            LugageSorterEventController lugageSorterEventController = new LugageSorterEventController();
+            lugageSorterEventController.lugageSorterEventHandler += LugageSorterListener;
         }
 
         private void StartCounterQueueEventController()

@@ -25,11 +25,11 @@
 
         <Rectangle HorizontalAlignment="Left" Height="200" Margin="294,125,0,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
         <Label Name="lbl_SorterAmount"  Content="Amount" HorizontalAlignment="Left" Margin="318,194,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_soterFirst" Content="First" HorizontalAlignment="Left" Margin="328,225,0,0" VerticalAlignment="Top"/>
 
         <Rectangle HorizontalAlignment="Left" Height="100" Margin="434,175,0,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
         <Label Content="LugageInSorter" HorizontalAlignment="Left" Margin="438,194,0,0" VerticalAlignment="Top"/>
         <Label Content="LugageToGate" HorizontalAlignment="Left" Margin="441,225,0,0" VerticalAlignment="Top"/>
-        <Label Content="First" HorizontalAlignment="Left" Margin="328,225,0,0" VerticalAlignment="Top"/>
 
         <Rectangle HorizontalAlignment="Left" Height="40" Margin="628,85,0,0" Stroke="Black" VerticalAlignment="Top" Width="120"/>
         <Label Name="Gate1LugageAmount" Content="GateLugage" HorizontalAlignment="Left" Margin="642,92,0,0" VerticalAlignment="Top"/>

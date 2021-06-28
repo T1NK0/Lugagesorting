@@ -11,7 +11,7 @@ namespace Lugagesorting
         Random random = new Random();
         private int _counterNumber;
         private bool _isOpen = true;
-        //private int _arrayIndex = 0;
+        private int _arrayIndex = 0;
         public static Lugage[] _counterLugageQueue = new Lugage[50];
         private Thread _t;
 
@@ -96,82 +96,85 @@ namespace Lugagesorting
             }
         }
 
-        ///// <summary>
-        ///// Adds lugages to our counter's lugage queue, if the counter is open.
-        ///// </summary>
-        ///// <param name="lugage">used to make an arrayindex into a piece of lugage</param>
-        ///// <returns>true or false wether theres room for lugage</returns>
-        //public bool AddToCheckinCounterQueue(Lugage lugage)
-        //{
-        //    if (_arrayIndex >= CounterLugageQueue.Length)
-        //    {
-        //        return false;
-        //    }
-        //    CounterLugageQueue[_arrayIndex] = lugage;
-        //    _arrayIndex++;
-        //    return true;
-        //}
-
-        ///// <summary>
-        ///// Retrieves the lugage from the queue so it can be chekced in.
-        ///// </summary>
-        ///// <returns>Either null or the temp lugage from array index 1, so that it consumes from the array as a queue.</returns>
-        //public Lugage RetrieveFromQueue()
-        //{
-        //    if (CounterLugageQueue == null)
-        //    {
-        //        return null;
-        //    }
-        //    Lugage tempLugage = CounterLugageQueue[0];
-        //    for (int i = 1; i < _arrayIndex; i++)
-        //    {
-        //        CounterLugageQueue[i - 1] = CounterLugageQueue[i];
-        //    }
-
-        //    if (_arrayIndex != 0)
-        //    {
-        //        CounterLugageQueue[_arrayIndex - 1] = null;
-        //    }
-
-        //    _arrayIndex--;
-        //    return tempLugage;
-        //}
-
         /// <summary>
-        /// Adds to an array like a queue
+        /// Adds lugages to our counter's lugage queue, if the counter is open.
         /// </summary>
-        /// <param name="lugage"></param>
-        /// <returns></returns>
+        /// <param name="lugage">used to make an arrayindex into a piece of lugage</param>
+        /// <returns>true or false wether theres room for lugage</returns>
         public bool AddToCheckinCounterQueue(Lugage lugage)
         {
-            for (int i = 0; i < CounterLugageQueue.Length; i++)
+            if (_arrayIndex >= CounterLugageQueue.Length)
             {
-                if (CounterLugageQueue[i] == null)
-                {
-                    CounterLugageQueue[i] = lugage;
-                    return true;
-                }
+                return false;
             }
-            return false;
+            CounterLugageQueue[_arrayIndex] = lugage;
+            _arrayIndex++;
+            return true;
         }
 
         /// <summary>
-        /// 
+        /// Retrieves the lugage from the queue so it can be chekced in.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Either null or the temp lugage from array index 1, so that it consumes from the array as a queue.</returns>
         public Lugage RetrieveFromCounterQueue()
         {
-            for (int i = 0; i < CounterLugageQueue.Length; i++)
+            if (CounterLugageQueue == null)
             {
-                if (CounterLugageQueue[i] != null)
-                {
-                    Lugage d = CounterLugageQueue[i];
-                    CounterLugageQueue[i] = null;
-                    return d;
-                }
+                return null;
             }
-            return null;
+            Lugage tempLugage = CounterLugageQueue[0];
+            for (int i = 1; i < _arrayIndex; i++)
+            {
+                CounterLugageQueue[i - 1] = CounterLugageQueue[i];
+            }
+
+            if (_arrayIndex != 0)
+            {
+                CounterLugageQueue[_arrayIndex - 1] = null;
+            }
+
+            if (_arrayIndex > 0)
+            {
+                _arrayIndex--;
+            }
+            return tempLugage;
         }
+
+        ///// <summary>
+        ///// Adds to an array like a queue
+        ///// </summary>
+        ///// <param name="lugage"></param>
+        ///// <returns></returns>
+        //public bool AddToCheckinCounterQueue(Lugage lugage)
+        //{
+        //    for (int i = 0; i < CounterLugageQueue.Length; i++)
+        //    {
+        //        if (CounterLugageQueue[i] == null)
+        //        {
+        //            CounterLugageQueue[i] = lugage;
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
+
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <returns></returns>
+        //public Lugage RetrieveFromCounterQueue()
+        //{
+        //    for (int i = 0; i < CounterLugageQueue.Length; i++)
+        //    {
+        //        if (CounterLugageQueue[i] != null)
+        //        {
+        //            Lugage d = CounterLugageQueue[i];
+        //            CounterLugageQueue[i] = null;
+        //            return d;
+        //        }
+        //    }
+        //    return null;
+        //}
 
         /// <summary>
         /// 
@@ -203,7 +206,7 @@ namespace Lugagesorting
                     {
                         Debug.WriteLine($"Counter {CounterNumber} queue is empty");
                         //Manager.PrintEvent?.Invoke(new DataPrinter($"Counter {CounterNumber} queue is empty", DataPrinter.DataTypePrint.ManagerData));
-                        Thread.Sleep(2000);
+                        Monitor.Wait(CounterLugageQueue, 2000);
                     }
 
                     for (int i = 0; i < Manager.sorterConveyorbelt.Length; i++)

@@ -15,7 +15,6 @@ namespace LugageSorterGUI
 
         //The constructor
         public CheckinQueueEvent(int amount, int counterNumber, bool status)
-        //public CheckinQueueEvent(int amount)
         {
             Amount = amount; //Sets it equal to our amount which we can change.
             CounterNumber = counterNumber;
