@@ -226,8 +226,8 @@ namespace Lugagesorting
                         //if (Manager.gates[i].GateBuffer == null)
                         //{
                             Lugage tempLugage = RetrieveFromSorterQueue();
-                            if (Manager.gates[i].FlightPlan != null)
-                            {
+                            //if (Manager.gates[i].FlightPlan != null)
+                            //{
                                 if (tempLugage != null)
                                 {
                                     if (tempLugage.PlaneNumber == Manager.gates[i].FlightPlan.PlaneNumber)
@@ -239,7 +239,7 @@ namespace Lugagesorting
                                         Debug.WriteLine($"luggage {tempLugage.LugageNumber} added to gate {i} at {currentTime}");
                                         i = Manager.gates.Length + 1;
                                     }
-                                }
+                                //}
                             }
                         //}
                         Thread.Sleep(1);
