@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="images\61082.jpg" />
+    <None Remove="images\Checkin.jpg" />
+    <None Remove="images\Gate.jpg" />
+    <None Remove="images\sorter.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,7 +17,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="images\61082.jpg">
+    <Resource Include="images\Sorter.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\Gate.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\Checkin.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
