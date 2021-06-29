@@ -78,7 +78,7 @@ namespace Lugagesorting
                             {
                                 for (int k = 0; k < Manager.gates[i].GateBuffer.Length; k++)
                                 {
-                                    //Loops through 25 times.. gotta break it..
+                                    //Loops through 25 times.. gotta break it somehow..
                                     if (Manager.gates[i].GateBuffer[k] == null)
                                     {
                                         Debug.WriteLine($"{tempLugage.LugageNumber} has been added to gate {Manager.gates[i].GateNumber}");
@@ -144,8 +144,8 @@ namespace Lugagesorting
                     //i = Manager.gates[i].GateBuffer.Length + 1;
                 }
             }
-            Monitor.PulseAll(_threadLock);
-            Monitor.Exit(_threadLock);
+            Monitor.PulseAll(Manager.sorterConveyorbelt);
+            Monitor.Exit(Manager.sorterConveyorbelt);
         }
     }
 }

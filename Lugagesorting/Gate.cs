@@ -61,33 +61,36 @@ namespace Lugagesorting
                 //Try and enter a thread using the lugage que as a lock
                 if (Monitor.TryEnter(_threadLock))
                 {
-                    for (int i = 0; i < Manager.flightPlans.Length; i++)
+                    if (Manager.gates[GateNumber].GateBuffer[0] != null)
                     {
-                        if (Manager.flightPlans[i] == null)
+                        for (int i = 0; i < Manager.flightPlans.Length; i++)
                         {
-                            Monitor.Wait(_threadLock, 2000);
-                        }
-
-                        if (Manager.flightPlans[i] != null && GateBuffer[i] != null)
-                        {
-                            if (Manager.flightPlans[i].PlaneNumber == GateBuffer[0].PlaneNumber)
+                            if (Manager.flightPlans[i] == null)
                             {
-                                double s = (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds;
-                                if (((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds <= Manager.GateOpenDeparture) && ((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds >= Manager.GateCloseDeparture))
-                                {
-                                    IsOpen = true;
-                                }
-                                else
-                                {
-                                    IsOpen = false;
-                                }
+                                Monitor.Wait(_threadLock, 2000);
+                            }
 
-                                i = Manager.flightPlans.Length;
-                                Debug.WriteLine(s);
-
-                                if (IsOpen)
+                            if (Manager.flightPlans[i] != null && GateBuffer[i] != null)
+                            {
+                                if (Manager.flightPlans[i].PlaneNumber == GateBuffer[0].PlaneNumber)
                                 {
-                                    RetrieveFromGateBuffer();
+                                    double s = (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds;
+                                    if (((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds <= Manager.GateOpenDeparture) && ((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds >= Manager.GateCloseDeparture))
+                                    {
+                                        IsOpen = true;
+                                    }
+                                    else
+                                    {
+                                        IsOpen = false;
+                                    }
+
+                                    i = Manager.flightPlans.Length;
+                                    Debug.WriteLine(s);
+
+                                    if (IsOpen)
+                                    {
+                                        RetrieveFromGateBuffer();
+                                    }
                                 }
                             }
                         }
@@ -133,17 +136,17 @@ namespace Lugagesorting
             return tempLugage;
         }
 
-        public int AmountInCounterArray()
+        public int AmountInGateArray()
         {
-            int AmountInArray = 0;
+            int amountInArray = 0;
             for (int i = 0; i < GateBuffer.Length; i++)
             {
                 if (GateBuffer[i] != null)
                 {
-                    AmountInArray += 1;
+                    amountInArray += 1;
                 }
             }
-            return AmountInArray;
+            return amountInArray;
         }
     }
 }

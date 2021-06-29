@@ -56,9 +56,9 @@ namespace LugageSorterGUI
         {
             int AmountInArray = 0;
 
-            for (int i = 0; i < Gate._gateBuffer.Length; i++)
+            for (int i = 0; i < Manager.gates.Length; i++)
             {
-                if (Gate._gateBuffer[i] != null)
+                if (Manager.gates[i].GateBuffer != null)
                 {
                     AmountInArray += 1;
                 }
