@@ -10,8 +10,9 @@ namespace Lugagesorting
     {
         private int _gateNumber;
         private bool _isOpen;
+        private int _arrayIndex = 0;
         private static Lugage[] _planeLugage = new Lugage[50];
-        public static Lugage[] _gateBuffer = new Lugage[15];
+        public static Lugage[] _gateBuffer = new Lugage[25];
         private Thread _t;
         private FlightPlan _flightPlan;
 
@@ -84,7 +85,7 @@ namespace Lugagesorting
 
                             if (IsOpen)
                             {
-                                this.GateBuffer[0] = null;
+                                RetrieveFromGateBuffer();
                             }
                         }
                     }
@@ -92,6 +93,43 @@ namespace Lugagesorting
                     Monitor.Exit(GateBuffer);
                 }
             }
+        }
+
+        public Lugage RetrieveFromGateBuffer()
+        {
+            if (GateBuffer == null)
+            {
+                return null;
+            }
+            Lugage tempLugage = GateBuffer[0];
+            for (int i = 1; i < _arrayIndex; i++)
+            {
+                GateBuffer[i - 1] = GateBuffer[i];
+            }
+
+            if (_arrayIndex != 0)
+            {
+                GateBuffer[_arrayIndex - 1] = null;
+            }
+
+            if (_arrayIndex > 0)
+            {
+                _arrayIndex--;
+            }
+            return tempLugage;
+        }
+
+        public int AmountInCounterArray()
+        {
+            int AmountInArray = 0;
+            for (int i = 0; i < GateBuffer.Length; i++)
+            {
+                if (GateBuffer[i] != null)
+                {
+                    AmountInArray += 1;
+                }
+            }
+            return AmountInArray;
         }
     }
 }
