@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 
@@ -19,13 +20,13 @@ namespace Lugagesorting
             get { return _gateNumber; }
             set { _gateNumber = value; }
         }
-        
+
         public bool IsOpen
         {
             get { return _isOpen; }
             set { _isOpen = value; }
         }
-        
+
         public Lugage[] GateBuffer
         {
             get { return _gateBuffer; }
@@ -55,7 +56,38 @@ namespace Lugagesorting
         {
             while (Thread.CurrentThread.IsAlive)
             {
-                
+                int tempOpenDeparture = 300;
+                int tempCloseDeparture = 40;
+
+                while (Thread.CurrentThread.IsAlive)
+                {
+                    //Try and enter a thread using the lugage que as a lock
+                    if (Monitor.TryEnter(GateBuffer))
+                    {
+                        for (int i = 0; i < Manager.flightPlans.Length; i++)
+                        {
+                            if (Manager.flightPlans[i] == null)
+                            {
+                                Monitor.Wait(GateBuffer, 2000);
+                            }
+                            if (Manager.flightPlans[i] != null && GateBuffer[i] != null)
+                            {
+                                double s = (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds;
+                                if ((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds <= tempOpenDeparture && (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds >= tempCloseDeparture)
+                                {
+                                    IsOpen = true;
+                                }
+                                else
+                                {
+                                    IsOpen = false;
+                                }
+
+                                i = Manager.flightPlans.Length;
+                                Debug.WriteLine(s);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
