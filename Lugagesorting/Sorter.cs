@@ -235,10 +235,10 @@ namespace Lugagesorting
                                 DateTime currentTime = DateTime.Now;
                                 tempLugage.TimeStampSortingOut = currentTime;
                                 Manager.gates[i].GateBuffer[_arrayIndex] = tempLugage;
-                                _arrayIndex++;
                                 Debug.WriteLine($"luggage {tempLugage.LugageNumber} added to gate {i} at {currentTime}");
                                 i = Manager.gates.Length + 1;
-                                Thread.Sleep(500);
+                                _arrayIndex++;
+                                //Thread.Sleep(500);
                             }
                             //}
                         }

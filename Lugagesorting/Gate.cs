@@ -11,10 +11,10 @@ namespace Lugagesorting
         private int _gateNumber;
         private bool _isOpen;
         private int _arrayIndex = 0;
-        private static Lugage[] _planeLugage = new Lugage[50];
         public static Lugage[] _gateBuffer = new Lugage[25];
         private Thread _t;
         private FlightPlan _flightPlan;
+        object _threadLock = new object();
 
         public int GateNumber
         {
@@ -59,38 +59,41 @@ namespace Lugagesorting
             while (Thread.CurrentThread.IsAlive)
             {
                 //Try and enter a thread using the lugage que as a lock
-                if (Monitor.TryEnter(GateBuffer))
+                if (Monitor.TryEnter(_threadLock))
                 {
                     for (int i = 0; i < Manager.flightPlans.Length; i++)
                     {
                         if (Manager.flightPlans[i] == null)
                         {
-                            Monitor.Wait(GateBuffer, 2000);
+                            Monitor.Wait(_threadLock, 2000);
                         }
 
                         if (Manager.flightPlans[i] != null && GateBuffer[i] != null)
                         {
-                            double s = (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds;
-                            if (((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds <= Manager.GateOpenDeparture) && ((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds >= Manager.GateCloseDeparture))
+                            if (Manager.flightPlans[i].PlaneNumber == GateBuffer[0].PlaneNumber)
                             {
-                                IsOpen = true;
-                            }
-                            else
-                            {
-                                IsOpen = false;
-                            }
+                                double s = (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds;
+                                if (((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds <= Manager.GateOpenDeparture) && ((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds >= Manager.GateCloseDeparture))
+                                {
+                                    IsOpen = true;
+                                }
+                                else
+                                {
+                                    IsOpen = false;
+                                }
 
-                            i = Manager.flightPlans.Length;
-                            Debug.WriteLine(s);
+                                i = Manager.flightPlans.Length;
+                                Debug.WriteLine(s);
 
-                            if (IsOpen)
-                            {
-                                RetrieveFromGateBuffer();
+                                if (IsOpen)
+                                {
+                                    RetrieveFromGateBuffer();
+                                }
                             }
                         }
                     }
-                    Monitor.PulseAll(GateBuffer);
-                    Monitor.Exit(GateBuffer);
+                    Monitor.PulseAll(_threadLock);
+                    Monitor.Exit(_threadLock);
                 }
             }
         }

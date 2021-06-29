@@ -42,7 +42,7 @@ namespace LugageSorterGUI
 
 
                         GateCheckinEventHandler?.Invoke(this, new GateEvent(tempAmount, gateNumber, gateStatus));
-                        Thread.Sleep(250);
+                        Thread.Sleep(1);
                         Monitor.PulseAll(_threadLock);
                         Monitor.Exit(_threadLock);
                     }

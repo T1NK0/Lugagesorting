@@ -32,7 +32,7 @@ namespace LugageSorterGUI
                         int tempAmount = AmountInSorterArray();
                         string lugageNumber = Manager.sorterConveyorbelt[0].LugageNumber;
                         lugageSorterEventHandler?.Invoke(this, new LugageSorterEvent(tempAmount, lugageNumber));
-                        Thread.Sleep(250);
+                        Thread.Sleep(1);
                         Monitor.PulseAll(_threadlock);
                         Monitor.Exit(_threadlock);
                     }

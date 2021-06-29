@@ -46,7 +46,7 @@ namespace LugageSorterGUI
 
 
                         lugageCreationEventHandler?.Invoke(this, new CheckinQueueEvent(tempAmount, checkinCounterNumber, counterStatus));
-                        Thread.Sleep(250);
+                        Thread.Sleep(1);
                         Monitor.PulseAll(_threadlock);
                         Monitor.Exit(_threadlock);
                     }
