@@ -29,6 +29,7 @@ namespace LugageSorterGUI
 
             StartCounterQueueEventController();
             SorterEventController();
+            GateEventController();
         }
 
         private void LugageCreatedListener(object sender, EventArgs e)
@@ -110,10 +111,78 @@ namespace LugageSorterGUI
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     lbl_SorterAmount.Content = ((LugageSorterEvent)e).Amount;
-                    lbl_soterFirst.Content = ((LugageSorterEvent)e).Lugage;
+                    lbl_LugageGettingSorted.Content = ((LugageSorterEvent)e).Lugage;
+                    //lbl_LugageToGate.Content = ((LugageSorterEvent)e).
                 }));
             }
 
+        }
+
+        private void GateEventListener(object sender, EventArgs e)
+        {
+            if (e is GateEvent)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    switch (((GateEvent)e).GateNumber)
+                    {
+                        case 0:
+                            if (((GateEvent)e).GateNumber == 0)
+                            {
+                                //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                                lbl_Gate1Number.Content = "Gate: " + ((GateEvent)e).GateNumber;
+                                lbl_Gate1LugageAmount.Content = ((GateEvent)e).Amount;
+                            }
+                            if (((GateEvent)e).Status)
+                            {
+                                lbl_Gate1State.Background = new SolidColorBrush(Colors.Green);
+                                lbl_Gate1State.Content = "Open";
+                            }
+                            else
+                            {
+                                lbl_Gate1State.Background = new SolidColorBrush(Colors.Red);
+                                lbl_Gate1State.Content = "Closed";
+                            }
+                            break;
+                        case 1:
+                            if (((GateEvent)e).GateNumber == 1)
+                            {
+                                //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                                lbl_Gate2Number.Content = "Gate: " + ((GateEvent)e).GateNumber;
+                                lbl_Gate2LugageAmount.Content = ((GateEvent)e).Amount;
+                            }
+                            if (((GateEvent)e).Status)
+                            {
+                                lbl_Gate2State.Background = new SolidColorBrush(Colors.Green);
+                                lbl_Gate2State.Content = "Open";
+                            }
+                            else
+                            {
+                                lbl_Gate2State.Background = new SolidColorBrush(Colors.Red);
+                                lbl_Gate2State.Content = "Closed";
+                            }
+                            break;
+                        case 2:
+                            if (((GateEvent)e).GateNumber == 2)
+                            {
+                                //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                                lbl_Gate3Number.Content = "Gate: " + ((GateEvent)e).GateNumber;
+                                lbl_Gate3LugageAmount.Content = ((GateEvent)e).Amount;
+                            }
+                            if (((GateEvent)e).Status)
+                            {
+                                lbl_Gate3State.Background = new SolidColorBrush(Colors.Green);
+                                lbl_Gate3State.Content = "Open";
+                            }
+                            else
+                            {
+                                lbl_Gate3State.Background = new SolidColorBrush(Colors.Red);
+                                lbl_Gate3State.Content = "Closed";
+                            }
+                            break;
+                    }
+                }));
+            }
         }
 
         private void SorterEventController()
@@ -131,6 +200,14 @@ namespace LugageSorterGUI
             }
         }
 
+        private void GateEventController()
+        {
+            for (int i = 0; i < Manager.gates.Length; i++)
+            {
+                GateEventController gateEventController = new GateEventController(i);
+                gateEventController.GateCheckinEventHandler += GateEventListener;
+            }
+        }
 
         //Start airport button click
         private void Button_Click(object sender, RoutedEventArgs e)

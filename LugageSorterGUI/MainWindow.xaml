@@ -6,38 +6,41 @@
         xmlns:local="clr-namespace:LugageSorterGUI"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="START SIMULATION" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="START SIMULATION" HorizontalAlignment="Center" Margin="0,41,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
-        <Image Margin="34,69,671,294" Stretch="Fill"  Source="/images/Checkin.jpg"/>
-        <Label Name="lbl_Counter1Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="134,114,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.209,-1"/>
-        <Label Name="lbl_Counter1State" Content="State" HorizontalAlignment="Left" Margin="134,87,0,0" VerticalAlignment="Top"/>
-        <Label Name="lbl_Counter1" Content="State" HorizontalAlignment="Left" Margin="134,61,0,0" VerticalAlignment="Top"/>
+        <Image Margin="34,64,671,299" Stretch="Fill"  Source="/images/Checkin.jpg"/>
+        <Label Name="lbl_Counter1Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="134,109,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.209,-1"/>
+        <Label Name="lbl_Counter1State" Content="State" HorizontalAlignment="Left" Margin="134,82,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter1" Content="State" HorizontalAlignment="Left" Margin="134,56,0,0" VerticalAlignment="Top"/>
 
         <Image Margin="34,176,671,186" Stretch="Fill" Source="/images/Checkin.jpg"/>
         <Label Name="lbl_Counter2Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="134,222,0,0" VerticalAlignment="Top"/>
         <Label Name="lbl_Counter2State" Content="State" HorizontalAlignment="Left" Margin="134,194,0,0" VerticalAlignment="Top"/>
         <Label Name="lbl_Counter2" Content="State" HorizontalAlignment="Left" Margin="134,168,0,0" VerticalAlignment="Top"/>
 
-        <Image Margin="34,269,671,93" Stretch="Fill" Source="/images/Checkin.jpg"/>
-        <Label Name="lbl_Counter3Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="134,315,0,0" VerticalAlignment="Top"/>
-        <Label Name="lbl_Counter3State" Content="State" HorizontalAlignment="Left" Margin="134,289,0,0" VerticalAlignment="Top"/>
-        <Label Name="lbl_Counter3" Content="State" HorizontalAlignment="Left" Margin="134,263,0,0" VerticalAlignment="Top"/>
+        <Image Margin="34,293,671,69" Stretch="Fill" Source="/images/Checkin.jpg"/>
+        <Label Name="lbl_Counter3Queue" Content="Counter Queue" HorizontalAlignment="Left" Margin="134,339,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter3State" Content="State" HorizontalAlignment="Left" Margin="134,313,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Counter3" Content="State" HorizontalAlignment="Left" Margin="134,287,0,0" VerticalAlignment="Top"/>
+
         <Image Source="/images/Sorter.jpg" Margin="244,120,244,145"/>
-        <Label Name="lbl_SorterAmount"  Content="Amount" HorizontalAlignment="Left" Margin="286,132,0,0" VerticalAlignment="Top"/>
-        <Label Name="lbl_soterFirst" Content="First" HorizontalAlignment="Left" Margin="296,158,0,0" VerticalAlignment="Top"/>
-        <Label Content="LugageInSorter" HorizontalAlignment="Left" Margin="452,132,0,0" VerticalAlignment="Top"/>
-        <Label Content="LugageToGate" HorizontalAlignment="Left" Margin="455,158,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_SorterAmount"  Content="Amount" HorizontalAlignment="Left" Margin="272,166,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_LugageGettingSorted" Content="LugageInSorter" HorizontalAlignment="Center" Margin="0,132,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_LugageToGate" Content="LugageToGate" HorizontalAlignment="Left" Margin="454,166,0,0" VerticalAlignment="Top"/>
 
         <Image Margin="638,39,12,284" Stretch="Fill"  Source="/images/Gate.jpg"/>
-        <Label Name="Gate1LugageAmount" Content="GateLugage" HorizontalAlignment="Left" Margin="574,99,0,0" VerticalAlignment="Top"/>
-        <Label Name="Gate1State" Content="State" HorizontalAlignment="Left" Margin="611,69,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Gate1Number" Content="Number" HorizontalAlignment="Left" Margin="593,56,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Gate1State" Content="State" HorizontalAlignment="Left" Margin="610,82,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Gate1LugageAmount" Content="GateLugage" HorizontalAlignment="Left" Margin="574,109,0,0" VerticalAlignment="Top"/>
 
         <Image Margin="638,155,12,165" Stretch="Fill"  Source="/images/Gate.jpg"/>
-        <Label Name="Gate2LugageAmount" Content="GateLugage" HorizontalAlignment="Left" Margin="574,222,0,0" VerticalAlignment="Top"/>
-        <Label Name="Gate2State" Content="State" HorizontalAlignment="Left" Margin="601,194,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Gate2Number" Content="Number" HorizontalAlignment="Left" Margin="593,168,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Gate2State" Content="State" HorizontalAlignment="Left" Margin="610,194,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Gate2LugageAmount" Content="GateLugage" HorizontalAlignment="Left" Margin="573,222,0,0" VerticalAlignment="Top"/>
 
         <Image Margin="638,274,12,47" Stretch="Fill"  Source="/images/Gate.jpg"/>
-        <Label Name="Gate3LugageAmount" Content="GateLugage" HorizontalAlignment="Left" Margin="573,331,0,0" VerticalAlignment="Top"/>
-        <Label Name="Gate3State" Content="State" HorizontalAlignment="Left" Margin="610,300,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Gate3Number" Content="Number" HorizontalAlignment="Left" Margin="593,287,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Gate3State" Content="State" HorizontalAlignment="Left" Margin="610,313,0,0" VerticalAlignment="Top"/>
+        <Label Name="lbl_Gate3LugageAmount" Content="GateLugage" HorizontalAlignment="Left" Margin="573,339,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

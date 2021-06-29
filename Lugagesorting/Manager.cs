@@ -47,7 +47,7 @@ namespace Lugagesorting
             lugageCreaterThread.Start();
 
             //Create sorter thread
-            Thread threadSorter = new Thread(sorter.SortBagage);
+            Thread threadSorter = new Thread(sorter.SortLugage);
             threadSorter.Start();
         }
     }

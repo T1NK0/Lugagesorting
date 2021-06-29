@@ -66,7 +66,7 @@ namespace Lugagesorting
         //    return false; //Returns false, if we have not added a drink.
         //}
 
-        //public void SortBagage()
+        //public void SortLugage()
         //{
         //    while (Thread.CurrentThread.IsAlive)
         //    {
@@ -104,7 +104,6 @@ namespace Lugagesorting
         //                                i = Manager.gates.Length + 1;
         //                            }
         //                        }
-
         //                    }
         //                }
         //            }
@@ -115,7 +114,12 @@ namespace Lugagesorting
         //}
 
 
+
+
         //New sorter rework
+
+
+
 
         object _threadLock = new object();
         private int _arrayIndex = 0;
@@ -204,7 +208,7 @@ namespace Lugagesorting
         //    return false; //Returns false, if we have not added a drink.
         //}
 
-        public void SortBagage()
+        public void SortLugage()
         {
             while (Thread.CurrentThread.IsAlive)
             {
@@ -218,8 +222,9 @@ namespace Lugagesorting
 
                     for (int i = 0; i < Manager.gates.Length; i++)
                     {
-                        if (Manager.gates[i].GateBuffer == null)
-                        {
+                        //needs an index?
+                        //if (Manager.gates[i].GateBuffer == null)
+                        //{
                             Lugage tempLugage = RetrieveFromSorterQueue();
                             if (Manager.gates[i].FlightPlan != null)
                             {
@@ -236,7 +241,7 @@ namespace Lugagesorting
                                     }
                                 }
                             }
-                        }
+                        //}
                         Thread.Sleep(1);
                     }
                 }
