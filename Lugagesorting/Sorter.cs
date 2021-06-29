@@ -237,6 +237,7 @@ namespace Lugagesorting
                                 }
                             }
                         }
+                        Thread.Sleep(1);
                     }
                 }
                 Monitor.PulseAll(_threadLock);

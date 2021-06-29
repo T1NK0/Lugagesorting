@@ -64,8 +64,7 @@ namespace Lugagesorting
                         }
                         if (Manager.flightPlans[i] != null && CounterLugageQueue[i] != null)
                         {
-                            //    if (Manager.flightPlans[i].PlaneNumber == CounterLugageQueue[i].PlaneNumber)
-                            //    {
+                            double s = (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds;
                             if ((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds <= tempOpenDeparture && (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds >= tempCloseDeparture)
                             {
                                 IsOpen = true;
@@ -74,9 +73,10 @@ namespace Lugagesorting
                             {
                                 IsOpen = false;
                             }
-                            Monitor.PulseAll(CounterLugageQueue);
+
+                            i = Manager.flightPlans.Length;
+                            Debug.WriteLine(s);
                         }
-                        //}
                     }
 
                     //While the counter is open, do the following

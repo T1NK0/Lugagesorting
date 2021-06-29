@@ -29,7 +29,7 @@ namespace LugageSorterGUI
                     }
                     else
                     {
-                        int tempAmount = AmountInCounterArray();
+                        int tempAmount = AmountInSorterArray();
                         string lugageNumber = Manager.sorterConveyorbelt[0].LugageNumber;
                         lugageSorterEventHandler?.Invoke(this, new LugageSorterEvent(tempAmount, lugageNumber));
                         Thread.Sleep(250);
@@ -42,13 +42,13 @@ namespace LugageSorterGUI
         }
 
         //Measures the amount of luggage we have in the array
-        public int AmountInCounterArray()
+        public int AmountInSorterArray()
         {
             int AmountInArray = 0;
 
             for (int i = 0; i < Manager.sorterConveyorbelt.Length; i++)
             {
-                if (Manager.sorterConveyorbelt[0] != null)
+                if (Manager.sorterConveyorbelt[i] != null)
                 {
                     AmountInArray += 1;
                 }
