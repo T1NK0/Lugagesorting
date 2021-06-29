@@ -48,6 +48,7 @@ namespace Lugagesorting
 
         public void Worker()
         {
+            //needs rework of Math
             int tempOpenDeparture = 300;
             int tempCloseDeparture = 40;
 

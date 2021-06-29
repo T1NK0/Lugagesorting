@@ -9,7 +9,7 @@ namespace Lugagesorting
     public class Gate : IOpenClose
     {
         private int _gateNumber;
-        private bool _isOpen = false;
+        private bool _isOpen;
         private Lugage[] _planeLugage = new Lugage[50];
         public static Lugage[] _gateBuffer = new Lugage[15];
         private Thread _t;
@@ -54,6 +54,7 @@ namespace Lugagesorting
 
         public void Worker()
         {
+            //Needs rework of Math
             while (Thread.CurrentThread.IsAlive)
             {
                 int tempOpenDeparture = 300;
