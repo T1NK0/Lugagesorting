@@ -44,8 +44,10 @@ namespace Lugagesorting
                                         Console.WriteLine($"Counter {counter.CounterNumber}'s queue is now full");
                                         Monitor.Wait(counter.CounterLugageQueue, 2000);
                                     }
-                                }
 
+                                    //Monitor.PulseAll(Manager.flightPlans[randomFlightplanIndex]);
+                                    //Monitor.Exit(Manager.flightPlans[randomFlightplanIndex]);
+                                }
                                 Thread.Sleep(500);
                             }
 

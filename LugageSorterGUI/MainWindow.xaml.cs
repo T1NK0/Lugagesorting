@@ -43,12 +43,10 @@ namespace LugageSorterGUI
                         switch (((CheckinQueueEvent)e).CounterNumber)
                         {
                             case 0:
-                                if (((CheckinQueueEvent)e).CounterNumber == 0)
-                                {
-                                    //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
-                                    lbl_Counter1.Content = "Counter: " + ((CheckinQueueEvent)e).CounterNumber;
-                                    lbl_Counter1Queue.Content = ((CheckinQueueEvent)e).Amount;
-                                }
+                                //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                                lbl_Counter1.Content = "Counter: " + ((CheckinQueueEvent)e).CounterNumber;
+                                lbl_Counter1Queue.Content = ((CheckinQueueEvent)e).Amount;
+
                                 if (((CheckinQueueEvent)e).Status)
                                 {
                                     lbl_Counter1State.Background = new SolidColorBrush(Colors.Green);
@@ -61,12 +59,10 @@ namespace LugageSorterGUI
                                 }
                                 break;
                             case 1:
-                                if (((CheckinQueueEvent)e).CounterNumber == 1)
-                                {
-                                    //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
-                                    lbl_Counter2.Content = "Counter: " + ((CheckinQueueEvent)e).CounterNumber;
-                                    lbl_Counter2Queue.Content = ((CheckinQueueEvent)e).Amount;
-                                }
+                                //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                                lbl_Counter2.Content = "Counter: " + ((CheckinQueueEvent)e).CounterNumber;
+                                lbl_Counter2Queue.Content = ((CheckinQueueEvent)e).Amount;
+
                                 if (((CheckinQueueEvent)e).Status)
                                 {
                                     lbl_Counter2State.Background = new SolidColorBrush(Colors.Green);
@@ -79,13 +75,10 @@ namespace LugageSorterGUI
                                 }
                                 break;
                             case 2:
-                                if (((CheckinQueueEvent)e).CounterNumber == 2)
-                                {
-                                    lbl_Counter3.Content = "Counter: " + ((CheckinQueueEvent)e).CounterNumber;
-                                    lbl_Counter3Queue.Content = ((CheckinQueueEvent)e).Amount;
-                                    lbl_Counter3State.Background = new SolidColorBrush(Colors.Green);
-                                    lbl_Counter3State.Content = "Open";
-                                }
+                                //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                                lbl_Counter3.Content = "Counter: " + ((CheckinQueueEvent)e).CounterNumber;
+                                lbl_Counter3Queue.Content = ((CheckinQueueEvent)e).Amount;
+
                                 if (((CheckinQueueEvent)e).Status)
                                 {
                                     lbl_Counter3State.Background = new SolidColorBrush(Colors.Green);
@@ -98,7 +91,6 @@ namespace LugageSorterGUI
                                 }
                                 break;
                         }
-
                     }));
                 }
             }
@@ -127,12 +119,10 @@ namespace LugageSorterGUI
                     switch (((GateEvent)e).GateNumber)
                     {
                         case 0:
-                            if (((GateEvent)e).GateNumber == 0)
-                            {
-                                //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
-                                lbl_Gate1Number.Content = "Gate: " + ((GateEvent)e).GateNumber;
-                                lbl_Gate1LugageAmount.Content = ((GateEvent)e).Amount;
-                            }
+                            //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                            lbl_Gate1Number.Content = "Gate: " + ((GateEvent)e).GateNumber;
+                            lbl_Gate1LugageAmount.Content = ((GateEvent)e).Amount;
+
                             if (((GateEvent)e).Status)
                             {
                                 lbl_Gate1State.Background = new SolidColorBrush(Colors.Green);
@@ -145,12 +135,10 @@ namespace LugageSorterGUI
                             }
                             break;
                         case 1:
-                            if (((GateEvent)e).GateNumber == 1)
-                            {
-                                //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
-                                lbl_Gate2Number.Content = "Gate: " + ((GateEvent)e).GateNumber;
-                                lbl_Gate2LugageAmount.Content = ((GateEvent)e).Amount;
-                            }
+                            //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                            lbl_Gate2Number.Content = "Gate: " + ((GateEvent)e).GateNumber;
+                            lbl_Gate2LugageAmount.Content = ((GateEvent)e).Amount;
+
                             if (((GateEvent)e).Status)
                             {
                                 lbl_Gate2State.Background = new SolidColorBrush(Colors.Green);
@@ -163,12 +151,10 @@ namespace LugageSorterGUI
                             }
                             break;
                         case 2:
-                            if (((GateEvent)e).GateNumber == 2)
-                            {
-                                //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
-                                lbl_Gate3Number.Content = "Gate: " + ((GateEvent)e).GateNumber;
-                                lbl_Gate3LugageAmount.Content = ((GateEvent)e).Amount;
-                            }
+                            //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
+                            lbl_Gate3Number.Content = "Gate: " + ((GateEvent)e).GateNumber;
+                            lbl_Gate3LugageAmount.Content = ((GateEvent)e).Amount;
+
                             if (((GateEvent)e).Status)
                             {
                                 lbl_Gate3State.Background = new SolidColorBrush(Colors.Green);
