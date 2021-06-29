@@ -218,19 +218,22 @@ namespace Lugagesorting
 
                     for (int i = 0; i < Manager.gates.Length; i++)
                     {
-                        Lugage tempLugage = RetrieveFromSorterQueue();
-                        if (Manager.gates[i].FlightPlan != null)
+                        if (Manager.gates[i].GateBuffer == null)
                         {
-                            if (tempLugage != null)
+                            Lugage tempLugage = RetrieveFromSorterQueue();
+                            if (Manager.gates[i].FlightPlan != null)
                             {
-                                if (tempLugage.PlaneNumber == Manager.gates[i].FlightPlan.PlaneNumber)
+                                if (tempLugage != null)
                                 {
-                                    DateTime currentTime = DateTime.Now;
-                                    tempLugage.TimeStampSortingOut = currentTime;
-                                    Manager.gates[i].GateBuffer[_arrayIndex] = tempLugage;
-                                    _arrayIndex++;
-                                    Debug.WriteLine($"luggage {tempLugage.LugageNumber} added to gate {i} at {currentTime}");
-                                    i = Manager.gates.Length + 1;
+                                    if (tempLugage.PlaneNumber == Manager.gates[i].FlightPlan.PlaneNumber)
+                                    {
+                                        DateTime currentTime = DateTime.Now;
+                                        tempLugage.TimeStampSortingOut = currentTime;
+                                        Manager.gates[i].GateBuffer[_arrayIndex] = tempLugage;
+                                        _arrayIndex++;
+                                        Debug.WriteLine($"luggage {tempLugage.LugageNumber} added to gate {i} at {currentTime}");
+                                        i = Manager.gates.Length + 1;
+                                    }
                                 }
                             }
                         }

@@ -42,11 +42,14 @@ namespace LugageSorterGUI
                         switch (((CheckinQueueEvent)e).CounterNumber)
                         {
                             case 0:
-                                if (((CheckinQueueEvent)e).CounterNumber == 0 && ((CheckinQueueEvent)e).Status)
+                                if (((CheckinQueueEvent)e).CounterNumber == 0)
                                 {
                                     //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
                                     lbl_Counter1.Content = "Counter: " + ((CheckinQueueEvent)e).CounterNumber;
                                     lbl_Counter1Queue.Content = ((CheckinQueueEvent)e).Amount;
+                                }
+                                if (((CheckinQueueEvent)e).Status)
+                                {
                                     lbl_Counter1State.Background = new SolidColorBrush(Colors.Green);
                                     lbl_Counter1State.Content = "Open";
                                 }
@@ -57,11 +60,14 @@ namespace LugageSorterGUI
                                 }
                                 break;
                             case 1:
-                                if (((CheckinQueueEvent)e).CounterNumber == 1 && ((CheckinQueueEvent)e).Status)
+                                if (((CheckinQueueEvent)e).CounterNumber == 1)
                                 {
                                     //Looks at our label (counter1) and checks if the event, e, and checks our queue, and tries to get the amount and make it a string.
                                     lbl_Counter2.Content = "Counter: " + ((CheckinQueueEvent)e).CounterNumber;
                                     lbl_Counter2Queue.Content = ((CheckinQueueEvent)e).Amount;
+                                }
+                                if (((CheckinQueueEvent)e).Status)
+                                {
                                     lbl_Counter2State.Background = new SolidColorBrush(Colors.Green);
                                     lbl_Counter2State.Content = "Open";
                                 }
@@ -72,10 +78,15 @@ namespace LugageSorterGUI
                                 }
                                 break;
                             case 2:
-                                if (((CheckinQueueEvent)e).CounterNumber == 2 && ((CheckinQueueEvent)e).Status)
+                                if (((CheckinQueueEvent)e).CounterNumber == 2)
                                 {
                                     lbl_Counter3.Content = "Counter: " + ((CheckinQueueEvent)e).CounterNumber;
                                     lbl_Counter3Queue.Content = ((CheckinQueueEvent)e).Amount;
+                                    lbl_Counter3State.Background = new SolidColorBrush(Colors.Green);
+                                    lbl_Counter3State.Content = "Open";
+                                }
+                                if (((CheckinQueueEvent)e).Status)
+                                {
                                     lbl_Counter3State.Background = new SolidColorBrush(Colors.Green);
                                     lbl_Counter3State.Content = "Open";
                                 }
