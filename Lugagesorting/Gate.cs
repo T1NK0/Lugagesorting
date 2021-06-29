@@ -57,8 +57,6 @@ namespace Lugagesorting
             //Needs rework of Math
             while (Thread.CurrentThread.IsAlive)
             {
-                int tempOpenDeparture = 300;
-                int tempCloseDeparture = 40;
 
                 while (Thread.CurrentThread.IsAlive)
                 {
@@ -71,10 +69,11 @@ namespace Lugagesorting
                             {
                                 Monitor.Wait(GateBuffer, 2000);
                             }
+
                             if (Manager.flightPlans[i] != null && GateBuffer[i] != null)
                             {
                                 double s = (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds;
-                                if ((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds <= tempOpenDeparture && (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds >= tempCloseDeparture)
+                                if (((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds <= Manager.GateOpenDeparture) && ((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds >= Manager.GateCloseDeparture))
                                 {
                                     IsOpen = true;
                                 }

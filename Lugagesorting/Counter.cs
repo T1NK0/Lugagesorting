@@ -48,10 +48,6 @@ namespace Lugagesorting
 
         public void Worker()
         {
-            //needs rework of Math
-            int tempOpenDeparture = 300;
-            int tempCloseDeparture = 40;
-
             while (Thread.CurrentThread.IsAlive)
             {
                 //Try and enter a thread using the lugage que as a lock
@@ -66,7 +62,7 @@ namespace Lugagesorting
                         if (Manager.flightPlans[i] != null && CounterLugageQueue[i] != null)
                         {
                             double s = (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds;
-                            if ((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds <= tempOpenDeparture && (Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds >= tempCloseDeparture)
+                            if (((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds <= Manager.CounterOpenBeforeDeparture) && ((Manager.flightPlans[i].DepartureTime - DateTime.Now).TotalSeconds >= Manager.CounterCloseBeforeDeparture))
                             {
                                 IsOpen = true;
                             }
@@ -74,7 +70,6 @@ namespace Lugagesorting
                             {
                                 IsOpen = false;
                             }
-
                             i = Manager.flightPlans.Length;
                             Debug.WriteLine(s);
                         }

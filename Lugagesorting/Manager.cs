@@ -18,8 +18,13 @@ namespace Lugagesorting
         LugageProducer lugageProducer = new LugageProducer();
         FlightProducer flightProducer = new FlightProducer();
 
-        public static FlightPlan[] flightPlans = new FlightPlan[3];
+        public static FlightPlan[] flightPlans = new FlightPlan[50];
         public static Lugage[] sorterConveyorbelt = new Lugage[300];
+
+        public static int CounterOpenBeforeDeparture = 180; //Seconds
+        public static int CounterCloseBeforeDeparture = 60; //Seconds
+        public static int GateOpenDeparture = 180; //Seconds
+        public static int GateCloseDeparture = 60; //Seconds
 
         public void SimulationStart()
         {

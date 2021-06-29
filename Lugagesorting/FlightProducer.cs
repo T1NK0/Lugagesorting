@@ -17,7 +17,7 @@ namespace Lugagesorting
                 if (Monitor.TryEnter(Manager.flightPlans))
                 {
 
-                    while (Manager.flightPlans[2] != null)
+                    while (Manager.flightPlans[49] != null)
                     {
                         Monitor.Wait(Manager.flightPlans);
                     }
@@ -27,7 +27,7 @@ namespace Lugagesorting
                         int destination = random.Next(0, 3);
                         string destinationNumber = ((Destination)destination).ToString().ToUpper();
                         string planeNumber = destinationNumber[0].ToString() + destinationNumber[1].ToString() + (random.Next(100, 900)).ToString();
-                        DateTime departureTime = DateTime.Now.AddSeconds(random.Next(20, 50));
+                        DateTime departureTime = DateTime.Now.AddSeconds(random.Next(120, 180));
                         int gateNumber = random.Next(0, Manager.gates.Length);
 
                         if (Monitor.TryEnter(Manager.gates[gateNumber]))
