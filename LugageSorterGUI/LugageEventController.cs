@@ -34,10 +34,12 @@ namespace LugageSorterGUI
             {
                 if (Monitor.TryEnter(_threadlock))
                 {
-                    if (Manager.counters[CounterNumber] == null)
+                    if (Manager.counters[CounterNumber] != null)
                     {
+
                         Monitor.Wait(_threadlock, 2000);
                     }
+
                     else
                     {
                         int tempAmount = AmountInCounterArray();
@@ -60,14 +62,25 @@ namespace LugageSorterGUI
         {
             int AmountInArray = 0;
 
-            for (int i = 0; i < Counter._counterLugageQueue.Length; i++)
+            for (int i = 0; i < Manager.counters[CounterNumber].CounterLugageQueue.Length; i++)
             {
-                if (Counter._counterLugageQueue[i] != null)
+                if (Manager.counters[CounterNumber].CounterLugageQueue[i] != null)
                 {
                     AmountInArray += 1;
                 }
             }
             return AmountInArray;
+
+            //int AmountInArray = 0;
+
+            //for (int i = 0; i < Counter._counterLugageQueue.Length; i++)
+            //{
+            //    if (Counter._counterLugageQueue[i] != null)
+            //    {
+            //        AmountInArray += 1;
+            //    }
+            //}
+            //return AmountInArray;
         }
     }
 }

@@ -98,6 +98,17 @@ namespace Lugagesorting
             }
         }
 
+        public bool AddToGate(Lugage lugage)
+        {
+            if (_arrayIndex >= GateBuffer.Length)
+            {
+                return false;
+            }
+            GateBuffer[_arrayIndex] = lugage;
+            _arrayIndex++;
+            return true;
+        }
+
         public Lugage RetrieveFromGateBuffer()
         {
             if (GateBuffer == null)
