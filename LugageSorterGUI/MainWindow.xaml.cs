@@ -191,7 +191,7 @@ namespace LugageSorterGUI
             for (int i = 0; i < Manager.gates.Length; i++)
             {
                 GateEventController gateEventController = new GateEventController(i);
-                gateEventController.GateCheckinEventHandler += GateEventListener;
+                gateEventController.GateEventHandler += GateEventListener;
             }
         }
 

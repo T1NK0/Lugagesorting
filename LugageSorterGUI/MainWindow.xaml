@@ -26,7 +26,7 @@
         <Image Source="/images/Sorter.jpg" Margin="244,120,244,145"/>
         <Label Name="lbl_SorterAmount"  Content="Amount" HorizontalAlignment="Left" Margin="272,166,0,0" VerticalAlignment="Top"/>
         <Label Name="lbl_LugageGettingSorted" Content="LugageInSorter" HorizontalAlignment="Center" Margin="0,132,0,0" VerticalAlignment="Top"/>
-        <Label Name="lbl_LugageToGate" Content="LugageToGate" HorizontalAlignment="Left" Margin="454,166,0,0" VerticalAlignment="Top"/>
+        <!--<Label Name="lbl_LugageToGate" Content="LugageToGate" HorizontalAlignment="Left" Margin="454,166,0,0" VerticalAlignment="Top"/>-->
 
         <Image Margin="638,39,12,284" Stretch="Fill"  Source="/images/Gate.jpg"/>
         <Label Name="lbl_Gate1Number" Content="Number" HorizontalAlignment="Left" Margin="593,56,0,0" VerticalAlignment="Top"/>

@@ -61,13 +61,15 @@ namespace LugageSorterGUI
         {
             int AmountInArray = 0;
 
-            for (int i = 0; i < Manager.counters.Length; i++)
+
+            for (int i = 0; i < Manager.counters[CounterNumber].CounterLugageQueue.Length; i++)
             {
-                if (Manager.counters[i].CounterLugageQueue != null)
+                if (Manager.counters[CounterNumber].CounterLugageQueue != null)
                 {
-                    AmountInArray++;
+                    AmountInArray += 1;
                 }
             }
+
             return AmountInArray;
         }
     }

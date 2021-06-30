@@ -1,6 +1,7 @@
 ﻿using Lugagesorting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 
@@ -8,7 +9,7 @@ namespace LugageSorterGUI
 {
     class GateEventController
     {
-        public EventHandler GateCheckinEventHandler;
+        public EventHandler GateEventHandler;
         object _threadLock = new object();
         private int _gateNumber;
         public int GateNumber
@@ -28,27 +29,21 @@ namespace LugageSorterGUI
         {
             while (true)
             {
-                if (Monitor.TryEnter(_threadLock))
+                if (Manager.gates[GateNumber] != null)
                 {
-                    if (Manager.gates[GateNumber] == null)
-                    {
-                        Monitor.Wait(_threadLock, 2000);
-                    }
-                    else
-                    {
-                        int tempAmount = AmountInGateBuffer();
-                        int gateNumber = Manager.gates[GateNumber].GateNumber;
-                        bool gateStatus = Manager.gates[GateNumber].IsOpen;
+                    
 
+                    int tempAmount = AmountInGateBuffer();
 
-                        GateCheckinEventHandler?.Invoke(this, new GateEvent(tempAmount, gateNumber, gateStatus));
-                        Thread.Sleep(1);
-                        Monitor.PulseAll(_threadLock);
-                        Monitor.Exit(_threadLock);
-                    }
+                    //Debug.WriteLine($"{tempAmount} {GateNumber}");
+
+                    bool gateStatus = Manager.gates[GateNumber].IsOpen;
+
+                    GateEventHandler?.Invoke(this, new GateEvent(tempAmount, GateNumber, gateStatus));
+                    Thread.Sleep(1);
                 }
-
             }
+
         }
 
         //Measures the amount of luggage we have in the array
@@ -56,9 +51,9 @@ namespace LugageSorterGUI
         {
             int AmountInArray = 0;
 
-            for (int i = 0; i < Manager.gates.Length; i++)
+            for (int i = 0; i < Manager.gates[GateNumber].GateBuffer.Length; i++)
             {
-                if (Manager.gates[i].GateBuffer != null)
+                if (Manager.gates[GateNumber].GateBuffer != null)
                 {
                     AmountInArray += 1;
                 }

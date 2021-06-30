@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lugagesorting", "Lugagesorting\Lugagesorting.csproj", "{1377936B-8A3D-4D9E-8871-88326318CD91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LugageSorterGUI", "LugageSorterGUI\LugageSorterGUI.csproj", "{33CEF5C8-3B44-4685-9293-F42315A465C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LugageSorterGUI", "LugageSorterGUI\LugageSorterGUI.csproj", "{33CEF5C8-3B44-4685-9293-F42315A465C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
