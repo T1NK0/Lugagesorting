@@ -8,7 +8,6 @@ namespace Lugagesorting
 {
     public class Sorter
     {
-        object _threadLock = new object();
         private int _arrayIndex = 0;
 
         public static int AmountInArray(Lugage[] lugage)
@@ -56,22 +55,22 @@ namespace Lugagesorting
         {
             while (Thread.CurrentThread.IsAlive)
             {
+                //Try enter on the sorterbuffer
                 if (Monitor.TryEnter(Manager.sorterConveyorbelt))
                 {
+                    //if the sorterbuffer is empty
                     if (AmountInArray(Manager.sorterConveyorbelt) == 0)
                     {
+                        //Wait and say it's empty.
                         Debug.WriteLine("Sorter buffer is empty");
                         Monitor.Wait(Manager.sorterConveyorbelt, 2000);
                     }
 
                     for (int i = 0; i < Manager.gates.Length; i++)
                     {
-                        //needs an index?
-                        //if (Manager.gates[i].GateBuffer == null)
-                        //{
+                        //Sets our temp lugage
                         Lugage tempLugage = RetrieveFromSorterQueue();
-                        //if (Manager.gates[i].FlightPlan != null)
-                        //{
+                        //If the retrieveFromSorterQueue got a lugage, continue
                         if (tempLugage != null)
                         {
                             if (tempLugage.PlaneNumber == Manager.gates[i].FlightPlan.PlaneNumber)
@@ -83,6 +82,7 @@ namespace Lugagesorting
                                     {
                                         Debug.WriteLine($"{tempLugage.LugageNumber} has been added to gate {Manager.gates[i].GateNumber}");
                                         tempLugage.TimeStampSortingOut = DateTime.Now;
+                                        tempLugage.TimeStampGate = DateTime.Now;
                                         Manager.gates[i].AddToGate(tempLugage);
                                         k = Manager.gates[i].GateBuffer.Length + 1;
                                     }
@@ -100,48 +100,6 @@ namespace Lugagesorting
                         //}
                         Thread.Sleep(1);
                     }
-
-                    //for (int i = 0; i < Manager.sorterConveyorbelt.Length; i++)
-                    //{
-                    //    Lugage tempLugage = RetrieveFromSorterQueue();
-                    //    if (Manager.sorterConveyorbelt[i] != null)
-                    //    {
-                    //        tempLugage.TimeStampSortingIn = DateTime.Now;
-                    //    }
-
-                    //    for (int j = 0; j < Manager.gates.Length; j++)
-                    //    {
-                    //        if (Manager.sorterConveyorbelt[i].PlaneNumber == Manager.gates[j].FlightPlan.PlaneNumber)
-                    //        {
-                    //            if (Monitor.TryEnter(Manager.gates[j], 3000))
-                    //            {
-                    //                while (Manager.gates[j].AmountInCounterArray() >= Manager.gates[j].GateBuffer.Length)
-                    //                {
-                    //                    Debug.WriteLine("Gate is full");
-                    //                    Monitor.Wait(Manager.gates[j], 2000);
-                    //                }
-
-                    //                for (int k = 0; k < Manager.gates[j].GateBuffer.Length; k++)
-                    //                {
-                    //                    if (Manager.gates[j].GateBuffer[k] == null)
-                    //                    {
-                    //                        Debug.WriteLine($"{Manager.sorterConveyorbelt[i].LugageNumber} has been added to gate {Manager.gates[j].GateNumber}");
-
-                    //                        tempLugage.TimeStampSortingOut = DateTime.Now;
-
-                    //                        Manager.gates[j].GateBuffer[k] = RetrieveFromSorterQueue();
-
-                    //                        k = Manager.gates[j].GateBuffer.Length + 1;
-                    //                    }
-                    //                }
-                    //                Monitor.PulseAll(Manager.gates[j]);
-                    //                Monitor.Exit(Manager.gates[j]);
-                    //                j = Manager.gates.Length + 1;
-                    //            }
-                    //        }
-                    //    }
-                    //}
-                    //i = Manager.gates[i].GateBuffer.Length + 1;
                 }
             }
             Monitor.PulseAll(Manager.sorterConveyorbelt);

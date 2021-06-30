@@ -176,9 +176,9 @@ namespace Lugagesorting
         //}
 
         /// <summary>
-        /// 
+        /// Gets the amount in the counter array
         /// </summary>
-        /// <returns></returns>
+        /// <returns>the current amount in the array</returns>
         public int AmountInCounterArray()
         {
             int AmountInArray = 0;
@@ -193,7 +193,7 @@ namespace Lugagesorting
         }
 
         /// <summary>
-        /// 
+        /// Checks our lugage in and adds it to our sorter conveyor.
         /// </summary>
         public void CheckLugageIn()
         {
@@ -201,6 +201,7 @@ namespace Lugagesorting
             {
                 if (Monitor.TryEnter(CounterLugageQueue))
                 {
+                    //if the amount in the array is 0 wait.
                     if (AmountInCounterArray() == 0)
                     {
                         Debug.WriteLine($"Counter {CounterNumber} queue is empty");
@@ -215,8 +216,10 @@ namespace Lugagesorting
                             Lugage tempLugage = RetrieveFromCounterQueue();
                             if (tempLugage != null)
                             {
+                                //Set the datetime variable currentTime to now, so we can give lugage a timestamp.
                                 DateTime currentTime = DateTime.Now;
                                 tempLugage.TimeStampCheckin = currentTime;
+
                                 Manager.sorterConveyorbelt[i] = tempLugage;
                                 Debug.WriteLine($"{tempLugage.LugageNumber} has now been added to spot {i} on the conveyorbelt, with timestamp {tempLugage.TimeStampCheckin}");
                                 Monitor.Wait(CounterLugageQueue, random.Next(0, 2500));
